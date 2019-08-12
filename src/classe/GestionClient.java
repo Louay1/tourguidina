@@ -3,17 +3,17 @@ package classe;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import modele.Connection;
+import modele.DBConnection;
 import modele.Voyage;
 import modele.Client;
 
 
 public class GestionClient {
-	Connection c;
+	DBConnection c;
 	public java.sql.Connection con;
 	
 	public GestionClient() throws ClassNotFoundException, SQLException {
-		this.c = new Connection("l3guidina");
+		this.c = new DBConnection("l3guidina");
 	}	
 	
 	

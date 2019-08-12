@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import modele.*;
 
 public class GestionUtilisateur {
-	Connection c;
+	DBConnection c;
 	
 	public GestionUtilisateur() throws ClassNotFoundException, SQLException{
-		c = new Connection("l3guidina");
+		c = new DBConnection("l3guidina");
 	}
 	
 	public Utilisateur chercherUtilisateur(String email) throws ClassNotFoundException, SQLException{

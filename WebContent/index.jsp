@@ -16,11 +16,11 @@
 	    		<div class="three column row">
 	    			<div class="column">
 	    				<div class="ui link card">
-	    					<a class="image" href="ClientSite/index.jsp">
+	    					<a class="image" href="StatsServlet">
 	    						<img src="pics/admin.png">
 	    					</a>
 	    					<div class="content center">
-	    						 <a class="header" href="ClientSite/index.jsp">Admin</a>
+	    						 <a class="header" href="StatsServlet">Admin</a>
 	    					</div>
 	    				</div>
 	    				
@@ -28,7 +28,7 @@
 	    			
 	    			<div class="column">
 	    				<div class="ui link card">
-	    					<a class="image" href="ClientSite/index.jsp">
+	    				<a class="image" href="StatsServlet">
 	    						<img src="pics/agent.png">
 	    					</a>
 	    					<div class="content center">
@@ -39,7 +39,7 @@
 	    			
 	    			<div class="column">
 	    				<div class="ui link card">
-	    					<a class="image" href="ClientSite/index.jsp">
+	    					<a class="image" href="StatsServlet">
 	    						<img src="pics/client.png">
 	    					</a>
 	    					<div class="content center">

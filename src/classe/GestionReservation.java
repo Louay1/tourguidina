@@ -8,11 +8,11 @@ import java.sql.Date;
 import modele.*;
 
 public class GestionReservation {
-	Connection c;
+	DBConnection c;
 	public java.sql.Connection con;
 	
 	public GestionReservation() throws ClassNotFoundException, SQLException{
-		this.c = new Connection("l3guidina");
+		this.c = new DBConnection("l3guidina");
 	}
 	
 	public boolean ajouterReservation(Reservation reservation) throws ClassNotFoundException, SQLException{

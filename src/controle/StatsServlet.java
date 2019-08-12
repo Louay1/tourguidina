@@ -32,11 +32,16 @@ public class StatsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session=request.getSession(true);
+			System.out.println("Here1");
 			GestionAdmin ga = new GestionAdmin();
+			System.out.println("Here2");
 			int voyages = ga.statVoy();
+			System.out.println("Here3");
+			//request.getSession().setAttribute("voyages", voyages);
 			session.setAttribute("voyages", voyages);
 			response.sendRedirect("ClientSite/index.jsp"); 
 		} catch (ClassNotFoundException | SQLException e) {
+			System.out.println(e);
 			response.sendRedirect("SiteAdmin/Authentification_admin.jsp");
 		}
 	}

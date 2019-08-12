@@ -2,15 +2,15 @@ package classe;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import modele.Connection;
+import modele.DBConnection;
 import modele.Voyage;
 
 	public class GestionVoyage {
-		Connection c;
+		DBConnection c;
 		public java.sql.Connection con;	
 		
 		public GestionVoyage() throws ClassNotFoundException, SQLException {
-			this.c = new Connection("l3guidina");
+			this.c = new DBConnection("l3guidina");
 		}
 		
 		public int getNomberVoyages() throws SQLException {

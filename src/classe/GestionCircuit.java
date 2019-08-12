@@ -6,11 +6,11 @@ import modele.*;
 
 public class GestionCircuit {
 	
-	Connection c;
+	DBConnection c;
 	public java.sql.Connection con;
 	
 	public GestionCircuit() throws ClassNotFoundException, SQLException{
-		this.c = new Connection("l3guidina");
+		this.c = new DBConnection("l3guidina");
 	}
 	
 	public Circuit chercheCircuit(int id) throws ClassNotFoundException, SQLException {

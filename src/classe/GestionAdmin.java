@@ -5,11 +5,12 @@ import java.sql.SQLException;
 import modele.*;
 
 public class GestionAdmin {
-	Connection c;
+	DBConnection c;
 	public java.sql.Connection con;
 	
 	public GestionAdmin() throws ClassNotFoundException, SQLException {
-		this.c = new Connection("l3guidina");
+		this.c = new DBConnection("l3guidina");
+		
 	}
 	
 	public String statClients() throws ClassNotFoundException, SQLException{
