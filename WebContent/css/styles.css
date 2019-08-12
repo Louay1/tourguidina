@@ -1,0 +1,24 @@
+.hero-image{
+	background-image: url("../pics/tasili.jpg");
+	background-position: center;
+	height: 650px;
+	padding-top: 75px;
+}
+
+.hero-image-2{
+	background-image: url("../pics/tasili.jpg");
+	background-position: center;
+	height: 400px;
+	padding-top: 75px;
+}
+
+.ui.piled.segments{
+	z-index:1;
+	
+}
+
+
+
+
+
+
