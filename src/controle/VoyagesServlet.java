@@ -2,6 +2,7 @@ package controle;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,18 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import classe.*;
-
+import modele.*;
 /**
- * Servlet implementation class StatsServlet
+ * Servlet implementation class VoyagesServlet
  */
-@WebServlet("/StatsServlet")
-public class StatsServlet extends HttpServlet {
+@WebServlet("/VoyagesServlet")
+public class VoyagesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public StatsServlet() {
+    public VoyagesServlet() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -31,29 +33,18 @@ public class StatsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			HttpSession session=request.getSession(true);
-			//System.out.println("Here1");
+			HttpSession session=request.getSession();
 			GestionAdmin ga = new GestionAdmin();
-			//System.out.println("Here2");
-			int voyages = ga.statVoy();
-			int hotels = ga.statHotels();
-			int camps = ga.statCamps();
-			int guides = ga.statGuides();
-			int restau = ga.statRestau();
-			int villes = ga.statVilles();
-			
-			//System.out.println("Here3");
-			//request.getSession().setAttribute("voyages", voyages);
-			session.setAttribute("voyages", voyages);
-			session.setAttribute("hotels",hotels );
-			session.setAttribute("camps", camps);
-			session.setAttribute("guides",guides );
-			session.setAttribute("restau",restau );
-			session.setAttribute("villes",villes );
-			response.sendRedirect("ClientSite/index.jsp"); 
+			GestionVoyage gv = new GestionVoyage();
+			ArrayList<Voyage> allvoyages = new ArrayList<>();
+			allvoyages = gv.getAllVoyages();
+			session.setAttribute("allvoyages", allvoyages);
+			//System.out.println(response);
+			response.sendRedirect("ClientSite/voyages.jsp");
+			System.out.println(response);
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println(e);
-			response.sendRedirect("SiteAdmin/Authentification_admin.jsp");
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -66,9 +57,11 @@ public class StatsServlet extends HttpServlet {
 	}
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		GestionAdmin ga = new GestionAdmin();
-		int voyages = ga.statVoy();
-		System.out.println(voyages);
+		GestionVoyage gv = new GestionVoyage();
+		ArrayList<Voyage> allvoyages = new ArrayList<>();
+		allvoyages = gv.getAllVoyages();
+		for(Voyage voyage : allvoyages) {
+			System.out.println(voyage.getNom());
+		}
 	}
-
 }

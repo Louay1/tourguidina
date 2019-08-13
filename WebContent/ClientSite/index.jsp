@@ -30,7 +30,7 @@
 		<nav class="ui large top fixed hidden menu">
 		  <div class="ui container">
 		  	<a class="item"><img src="../pics/logo.png"></a>
-		    <a class="item" href="#voyages">Voyages</a>
+		    <a class="item" href="VoyagesServlet">Voyages</a>
 		    <a class="item" href="#manifest">Manifestations Culturelle</a>
 		    <a class="item" href="#sitetour">Sites Touristiques</a>
 		    <a class="item" href="#services">Services</a>
@@ -304,7 +304,7 @@
 				
 				<!-- Start of Statistics -->
 				<%
-					int voyages = 0;
+					//int voyages = 0;
 					
 				%>
 				<h1 class="ui header center aligned grid padded">Some Statistics</h1>
@@ -320,37 +320,45 @@
 					
 					<div class="statistic">
 						<div class="value">
-							+260
+							<% out.print(session.getAttribute("hotels")); %>
 						</div>
 						<div class="label">
-					      Hotel
+					      Hotels
 					    </div>
 					</div>
 					
 					<div class="statistic">
 						<div class="value">
-							+300
+							<% out.print(session.getAttribute("restau")); %>
 						</div>
 						<div class="label">
-					      Restaurant
+					      Restaurants
 					    </div>
 					</div>
 					
 					<div class="statistic">
 						<div class="value">
-							+600
+							<% out.print(session.getAttribute("guides")); %>
 						</div>
 						<div class="label">
-					      Organizer
+					      Guides Touristiques
 					    </div>
 					</div>
 					
 					<div class="statistic">
 						<div class="value">
-							+20
+							<% out.print(session.getAttribute("camps")); %>
 						</div>
 						<div class="label">
-					      State
+					      Camps
+					    </div>
+					</div>
+					<div class="statistic">
+						<div class="value">
+							<% out.print(session.getAttribute("villes")); %>
+						</div>
+						<div class="label">
+					      Villes
 					    </div>
 					</div>
 					

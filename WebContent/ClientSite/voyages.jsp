@@ -22,7 +22,30 @@
 	<!-- End of Script -->
 	<meta charset="UTF-8">
 </head>
-<body>
+<body>	
+
+		<!-- Navigation -->
+		<nav class="ui large top fixed hidden menu">
+		  <div class="ui container">
+		  	<a class="item"><img src="../pics/logo.png"></a>
+		    <a class="item" href="#voyages">Voyages</a>
+		    <a class="item" href="#manifest">Manifestations Culturelle</a>
+		    <a class="item" href="#sitetour">Sites Touristiques</a>
+		    <a class="item" href="#services">Services</a>
+		    <div class="right menu">
+		      <div class="item">
+		        <a class="ui button" id="signins">Log in</a>
+		      </div>
+		      <div class="item">
+		        <a class="ui primary button" id="signups">Sign Up</a>
+		      </div>
+		    </div>
+		  </div>
+		</nav>
+		
+		<!-- End Of Navigation -->
+
+
 	<div class="ui container">
 		<form action="" class="ui form">
 			<h4 class="ui dividing header">Sign Up</h4>

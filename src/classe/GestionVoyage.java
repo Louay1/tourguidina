@@ -66,6 +66,31 @@ import modele.Voyage;
 			}
 		}
 		
+		public ArrayList<Voyage> getAllVoyages() throws SQLException{
+			ArrayList<Voyage> voyages = new ArrayList<>();
+			String query = "Select * From voyages;";
+			c.resultset = c.statement.executeQuery(query);
+			
+			while(c.resultset.next()) {
+				String idvoyage = c.resultset.getString("idvoyage");
+				String nomvoyage= c.resultset.getString("nomvoyage");
+				int nbrplaces = c.resultset.getInt("nbrplaces");
+				double prix = c.resultset.getDouble("prix");
+				java.sql.Time heuredep = c.resultset.getTime("heuredep");
+				java.sql.Date datedep = c.resultset.getDate("datedep");
+				int nbrjour = c.resultset.getInt("nbrjours");
+				int idcircuit = c.resultset.getInt("idcircuit");
+				
+				Voyage voyage = new Voyage();
+				voyage.setIdvoy(idvoyage);voyage.setNom(nomvoyage);voyage.setPlaces(nbrplaces);
+				voyage.setPrice(prix); voyage.setHeuredep(heuredep); voyage.setDatedepart(datedep);
+				voyage.setNbrjours(nbrjour);
+				
+				voyages.add(voyage);
+			}
+			
+			return voyages;
+		}
 		public static void main(String[] args) throws SQLException, ClassNotFoundException {
 			GestionVoyage gv = new GestionVoyage();
 			//System.out.println(gv.getNomberVoyages());

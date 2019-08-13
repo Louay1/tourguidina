@@ -1,12 +1,14 @@
 package modele;
 
 import java.sql.Date;
+import java.sql.Time;
 
 public class Voyage {
 	private int places, nbrjours;
 	private double price;
 	private Date datedepart;
-	private String dist, nom, idvoy, heuredep;
+	private String dist, nom, idvoy;
+		Time heuredep;
 	public Voyage() {
 		super();
 	}
@@ -43,11 +45,11 @@ public class Voyage {
 		this.idvoy = idvoy;
 	}
 
-	public String getHeuredep() {
+	public Time getHeuredep() {
 		return heuredep;
 	}
 
-	public void setHeuredep(String heuredep) {
+	public void setHeuredep(Time heuredep) {
 		this.heuredep = heuredep;
 	}
 

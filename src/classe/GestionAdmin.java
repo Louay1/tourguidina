@@ -13,14 +13,14 @@ public class GestionAdmin {
 		
 	}
 	
-	public String statClients() throws ClassNotFoundException, SQLException{
+	public int statClients() throws ClassNotFoundException, SQLException{
 		String query = "Select Count(*) as totalclients From clients;";
 		c.resultset = c.statement.executeQuery(query);
 		int i = 0;
 		if(c.resultset.next()) {
 			i=c.resultset.getInt("totalclients");
 		}
-		return i + " Client";
+		return i ;
 	}
 	
 	
@@ -34,54 +34,54 @@ public class GestionAdmin {
 		return i + " Agent";
 	}
 	
-	public String statHotels() throws ClassNotFoundException, SQLException{
+	public int statHotels() throws ClassNotFoundException, SQLException{
 		String query = "Select Count(*) as totalhotels From hotels;";
 		c.resultset = c.statement.executeQuery(query);
 		int i = 0;
 		if(c.resultset.next()) {
 			i = c.resultset.getInt("totalhotels");
 		}
-		return i + " Hotel";
+		return i ;
 	}
 	
-	public String statRestau() throws ClassNotFoundException, SQLException{
+	public int statRestau() throws ClassNotFoundException, SQLException{
 		String query = "Select Count(*) as totalrestau From restaurants;";
 		c.resultset = c.statement.executeQuery(query);
 		int i = 0;
 		if(c.resultset.next()) {
 			i = c.resultset.getInt("totalrestau");
 		}
-		return i + " Restaurants";
+		return i;
 	}
 	
-	public String statCamps() throws ClassNotFoundException, SQLException{
+	public int statCamps() throws ClassNotFoundException, SQLException{
 		String query = "Select Count(*) as totalcamps From campingsites;";
 		c.resultset = c.statement.executeQuery(query);
 		int i = 0;
 		if(c.resultset.next()) {
 			i = c.resultset.getInt("totalcamps");
 		}
-		return i + " Camps";
+		return i ;
 	}
 	
-	public String statTransport() throws ClassNotFoundException, SQLException{
+	public int statTransport() throws ClassNotFoundException, SQLException{
 		String query = "Select Count(*) as totalveh From transport;";
 		c.resultset = c.statement.executeQuery(query);
 		int i = 0;
 		if(c.resultset.next()) {
 			i = c.resultset.getInt("totalveh");
 		}
-		return i + " Vehicules";
+		return i ;
 	}
 	
-	public String statGuides() throws ClassNotFoundException, SQLException{
+	public int statGuides() throws ClassNotFoundException, SQLException{
 		String query = "Select Count(*) as totalguide From guidestouristique;";
 		c.resultset = c.statement.executeQuery(query);
 		int i = 0;
 		if(c.resultset.next()) {
 			i = c.resultset.getInt("totalguide");
 		}
-		return i + " Guide Touristique";
+		return i ;
 	}
 	
 	
@@ -95,14 +95,24 @@ public class GestionAdmin {
 		return i ;
 	}
 	
-	public String statReservation() throws ClassNotFoundException, SQLException{
+	public int statReservation() throws ClassNotFoundException, SQLException{
 		String query = "Select Count(*) as totalres From reservation;";
 		c.resultset = c.statement.executeQuery(query);
 		int i = 0;
 		if(c.resultset.next()) {
 			i = c.resultset.getInt("totalres");
 		}
-		return i + " Reservation";
+		return i ;
+	}
+	
+	public int statVilles() throws ClassNotFoundException, SQLException{
+		String query = "Select Count(*) as totalvilles From villes;";
+		c.resultset = c.statement.executeQuery(query);
+		int i = 0;
+		if(c.resultset.next()) {
+			i = c.resultset.getInt("totalvilles");
+		}
+		return i ;
 	}
 	 
 	/*public boolean ajouterAgent(Agent agent) throws ClassNotFoundException, SQLException{

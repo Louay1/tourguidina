@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="../Semantic-UI-master/dist/semantic.css">
+	<link rel="stylesheet" href="Semantic-UI-master/dist/semantic.css">
 	<title>Welcome to Guidina Systems</title>
 <script src="Semantic-UI-master/dist/semantic.js">
 </script>
