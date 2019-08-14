@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 		pageEncoding="UTF-8"%>
+		
+		<%@page import="java.util.ArrayList"%>
+		<%@page import="classe.*"%>
+		<%@page import="modele.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +32,7 @@
 		<nav class="ui large top fixed hidden menu">
 		  <div class="ui container">
 		  	<a class="item"><img src="../pics/logo.png"></a>
-		    <a class="item" href="#voyages">Voyages</a>
+		    <a class="item" href="../VoyagesServlet">Voyages</a>
 		    <a class="item" href="#manifest">Manifestations Culturelle</a>
 		    <a class="item" href="#sitetour">Sites Touristiques</a>
 		    <a class="item" href="#services">Services</a>
@@ -44,81 +48,88 @@
 		</nav>
 		
 		<!-- End Of Navigation -->
-
-
+	<%
+		ArrayList<Voyage> allvoyages = new ArrayList<>();
+		allvoyages = (ArrayList<Voyage>) session.getAttribute("allvoyages");
+	%>
+	<h1 class="nos-voyages">Nos Voyages</h1>
 	<div class="ui container">
-		<form action="" class="ui form">
-			<h4 class="ui dividing header">Sign Up</h4>
-			<div class="field">
-				<label>Name</label>
-				 <div class="two fields">
-					<div class="field">
-        				<input type="text" name="first-name" placeholder="First Name">
-      				</div>
-      				<div class="field">
-       					<input type="text" name="last-name" placeholder="Last Name">
-      				</div>
-    			</div>
+		<div class="ui link centered cards">
+		<% for(Voyage voyage : allvoyages){ %>
+			<div class="card">
+				<div class="image">
+					<img src="../pics/oran.jpeg">
+				</div>
+				<div class="content">
+					<div class="header"><%= voyage.getNom() %></div>
+					<div class="description">
+        				Heure : <%= voyage.getHeuredep() %>
+        				<br>
+        				Date : <%= voyage.getDatedepart() %>
+        				<br>
+        				Price : <%= voyage.getPrice() %>
+     				 </div>
+				</div>
+				<div class="extra content">
+					<span class="right floated">
+						<%= voyage.getNbrjours() %>
+					</span>
+					<span>
+						<i class="plane icon"></i>
+						<%= voyage.getPlaces() %>
+					</span>
+				</div>
 			</div>
-			
-			<div class="field">
-				 <div class="two fields">
-					<div class="field">
-						<label>Date de Naissance</label>
-        				<input type="date" name="daten" placeholder="First Name">
-      				</div>
-      				<div class="field">
-      					<label>Sexe</label>
-       					<div class="ui selection dropdown">
-					    	<input type="hidden" name="gender">
-					        <i class="dropdown icon"></i>
-					        <div class="default text">Sexe</div>
-					        <div class="menu">
-					            <div class="item" data-value="1">Homme</div>
-		 		            	<div class="item" data-value="0">Femme</div>
-					    	</div>
-				    	</div>
-      				</div>
-    			</div>
-			</div>
-			
-			<div class="field">
-    			<div class="two fields">
-					<div class="field">
-						<label>Address</label>
-      					<input type="text" name="address" placeholder="Address">
-    				</div>
-    				<div class="field">
-   						<div class="field">
-							<label>State</label>
-				      		<select class="ui fluid dropdown">
-						        <option value="">State</option>
-						    	<option value="16">Alger</option>
-							    <option value="25">Constantine</option>
-							    <option value="05">Batna</option>
-							    <option value="31">Oran</option>
-							    <option value="21">Annaba</option>								 
-				      		</select>
-					    </div>
-    				</div>   					
-    			</div>
-    		</div>
-    		
-   			<div class="field">
-		    	<div class="two fields">
-		    		<div class="field">
-		    			<label>Email</label>
-		    			<input type="email" name="email" placeholder="Email">
-		    		</div>
-		      		<div class="field">
-		      			<label>Phone Number</label>
-		        		<input type="text" name="phone" placeholder="Phone Number">
-		      		</div>
-		    	</div>
-		  	</div>
-			<input class="ui button" type="submit" value="Submit">
-		</form>
+			<%} %>
+		</div>
 	</div>
+	
+	<br><br>
+<div class="ui inverted vertical footer segment">
+    <div class="ui center aligned container">
+      <div class="ui stackable inverted divided grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Group 1</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Link One</a>
+            <a href="#" class="item">Link Two</a>
+            <a href="#" class="item">Link Three</a>
+            <a href="#" class="item">Link Four</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Group 2</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Link One</a>
+            <a href="#" class="item">Link Two</a>
+            <a href="#" class="item">Link Three</a>
+            <a href="#" class="item">Link Four</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Group 3</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Link One</a>
+            <a href="#" class="item">Link Two</a>
+            <a href="#" class="item">Link Three</a>
+            <a href="#" class="item">Link Four</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Footer Header</h4>
+          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+        </div>
+      </div>
+      <div class="ui inverted section divider"></div>
+      <img src="../pics/logo.png" class="ui centered mini image">
+      <div class="ui horizontal inverted small divided link list">
+        <a class="item" href="#">Site Map</a>
+        <a class="item" href="#">Contact Us</a>
+        <a class="item" href="#">Terms and Conditions</a>
+        <a class="item" href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
 	
 <script>
 	$('.dropdown').dropdown();

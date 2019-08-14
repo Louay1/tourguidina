@@ -30,7 +30,7 @@
 		<nav class="ui large top fixed hidden menu">
 		  <div class="ui container">
 		  	<a class="item"><img src="../pics/logo.png"></a>
-		    <a class="item" href="VoyagesServlet">Voyages</a>
+		    <a class="item" href="../VoyagesServlet">Voyages</a>
 		    <a class="item" href="#manifest">Manifestations Culturelle</a>
 		    <a class="item" href="#sitetour">Sites Touristiques</a>
 		    <a class="item" href="#services">Services</a>
