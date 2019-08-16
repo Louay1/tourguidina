@@ -13,11 +13,11 @@ public class GestionUtilisateur {
 	}
 	
 	public Utilisateur chercherUtilisateur(String email) throws ClassNotFoundException, SQLException{
-		c.resultset = c.statement.executeQuery("Select * From users Where email='"+email+"';");
+		c.resultset = c.statement.executeQuery("Select * From utilisateurs Where email='"+email+"';");
 		
 		if(c.resultset.next()) {
 			Utilisateur user = new Utilisateur();
-			user.setIdUsr(c.resultset.getInt("iduser"));
+			user.setIdUsr(c.resultset.getString("iduser"));
 			user.setNom(c.resultset.getString("name"));
 			user.setEmail(c.resultset.getString("email"));
 			user.setMotPasse(c.resultset.getString("password"));
@@ -34,17 +34,21 @@ public class GestionUtilisateur {
 	public boolean ajouterUtilisateur(Utilisateur user) throws ClassNotFoundException, SQLException{
 		
 		if(user.getEmail().contentEquals("vide")) {
-			int res = c.statement.executeUpdate("Insert Into users Values(iduser,'"+user.getNom()+"','"+user.getEmail()+"','"+user.getMotPasse()+"','"+user.getNumTlphn()+"','"+user.getSexe()+");");
+			int res = c.statement.executeUpdate("Insert Into utilisateurs Values('"+keyGen()+"','"+user.getNom()+"','"+user.getPrenom()+"','"+user.getBirthdate()+"','"+user.getSexe()+"','"+user.getAddress()+"','"+user.getImage()+"','"+user.getMotPasse()+"','"+user.getEmail()+"','"+user.getNumTlphn()+"',"+user.getVille()+");");
 			return true;
 		}else {
 			if(chercherUtilisateur(user.getEmail()) != null) {
 				return false;
 			}else {
-				int res = c.statement.executeUpdate("Insert Into users Values(iduser,'"+user.getNom()+"','"+user.getEmail()+"','"+user.getMotPasse()+"','"+user.getNumTlphn()+"','"+user.getSexe()+");");
+				int res = c.statement.executeUpdate("Insert Into utilisateurs Values('"+keyGen()+"','"+user.getNom()+"','"+user.getPrenom()+"','"+user.getBirthdate()+"','"+user.getSexe()+"','"+user.getAddress()+"','"+user.getImage()+"','"+user.getMotPasse()+"','"+user.getEmail()+"','"+user.getNumTlphn()+"',"+user.getVille()+");");
 				System.out.println(res==1);
 				return res==1;
 			}
 		}
+	}
+	
+	public String keyGen() throws ClassNotFoundException, SQLException{
+		return "UCli-"+((int) (Math.random()*9999));
 	}
 	
 	public boolean modifierEmail(int id, String email) throws ClassNotFoundException, SQLException{
@@ -57,8 +61,25 @@ public class GestionUtilisateur {
 		return res==1;
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		GestionUtilisateur gu = new GestionUtilisateur();
+		System.out.println(gu.keyGen());
 		
+		Utilisateur user = new Utilisateur();
+		user.setIdUsr(gu.keyGen());
+		user.setNom("Louai");
+		user.setPrenom("Chouchane");
+		user.setBirthdate("1997-02-19");
+		user.setAddress("Fuck off, okay ?");
+		user.setImage("Hehe Nice try");
+		user.setMotPasse("password");
+		user.setNumTlphn("0799959010");
+		user.setEmail("vide");
+		user.setSexe("Male");
+		user.setVille(13);
+		
+		System.out.println(gu.ajouterUtilisateur(user));
+	
 	}
 	
 	

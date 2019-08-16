@@ -1,18 +1,52 @@
 package modele;
 
 public class Utilisateur {
-	private int idUsr;
-	private String nom,email,motPasse,phone,sexe;
+	private String idUsr;
+	private String nom,email,motPasse,phone,sexe, prenom, image, address, birthdate;
+	private int ville;
+	
 	
 	public Utilisateur() {
 		super();
 	}
 	
-	public int getIdUsr() {
+	public String getIdUsr() {
 		return idUsr;
 	}
-	public void setIdUsr(int idUsr) {
-		this.idUsr = idUsr;
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setIdUsr(String i) {
+		this.idUsr = i;
 	}
 	public String getNom() {
 		return nom;
@@ -44,5 +78,21 @@ public class Utilisateur {
 	}
 	public void setSexe(String sexe) {
 		this.sexe = sexe;
+	}
+
+	public String getBirthdate() {
+		return birthdate;
+	}
+
+	public void setBirthdate(String birthdate) {
+		this.birthdate = birthdate;
+	}
+
+	public int getVille() {
+		return ville;
+	}
+
+	public void setVille(int ville) {
+		this.ville = ville;
 	}
 }
