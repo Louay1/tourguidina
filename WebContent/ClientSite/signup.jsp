@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+
 	<!-- SIGN UP FORM -->
 			<div class="ui fullscreen basic modal sign-up">
 				<h1 class="ui header center aligned grid">Sign Up</h1> <br><br>
@@ -90,5 +84,3 @@
 			</div>
 			
 			<!-- End Of SIGN UP -->
-</body>
-</html>

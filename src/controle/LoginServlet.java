@@ -2,14 +2,17 @@ package controle;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import classe.GestionClient;
+import classe.*;
+import modele.*;
 
 /**
  * Servlet implementation class LoginServlet
@@ -32,11 +35,31 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		Utilisateur user = new Utilisateur();
+		user.setEmail(email); user.setMotPasse(password);
+		HttpSession session = request.getSession();
 		
 		try {
 			GestionClient gc = new GestionClient();
-			gc.login(email, password);
-			response.sendRedirect("ClientSite/index.jsp");
+			GestionReservation gr = new GestionReservation();
+			GestionVoyage gv = new GestionVoyage();
+			boolean isIt = gc.login(user);
+			
+			if(isIt) {
+				Client cl = new Client();
+				ArrayList<Reservation> rs = new ArrayList<>();
+				ArrayList<Voyage> vs = new ArrayList<>();
+				cl = gc.getClientUsingEmail(email);
+				rs = gr.getAllResByClient(cl.getIdClient());
+				String id = rs.get(0).getIdVoy();
+				System.out.println(id);
+				vs = gv.getVoyagesById(id);
+				session.setAttribute("client", cl);
+				session.setAttribute("rs", rs);
+				session.setAttribute("vs", vs);
+				response.sendRedirect("ClientSite/profile.jsp");
+			}
+			
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println(e.getMessage());

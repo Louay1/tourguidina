@@ -27,6 +27,9 @@
 </head>
 	<body>
 		<!-- Navigation -->
+		
+	
+	<!-- Navigation -->
 		<nav class="ui large top fixed hidden menu">
 		  <div class="ui container">
 		  	<a class="item"><img src="../pics/logo.png"></a>
@@ -35,7 +38,7 @@
 		    <a class="item" href="#sitetour">Sites Touristiques</a>
 		    <a class="item" href="#services">Services</a>
 		    <div class="right menu">
-		      <div class="item">
+		       <div class="item">
 		        <a class="ui button" id="signins">Log in</a>
 		      </div>
 		      <div class="item">
@@ -44,6 +47,7 @@
 		    </div>
 		  </div>
 		</nav>
+		
 		
 		<!-- End Of Navigation -->
 		

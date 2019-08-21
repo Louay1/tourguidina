@@ -66,25 +66,50 @@ import modele.Voyage;
 			}
 		}
 		
+		public ArrayList<Voyage> getVoyagesById(String idvoy) throws ClassNotFoundException, SQLException{
+			ArrayList<Voyage> vs = new ArrayList<>();
+			String query = "Select * From voyages where idvoyage like '"+idvoy+"';";
+			c.resultset = c.statement.executeQuery(query);
+			while(c.resultset.next()) {
+				Voyage v = new Voyage();
+				v.setIdvoy(c.resultset.getString("idvoyage"));
+				v.setNom(c.resultset.getString("nomvoyage"));
+				v.setNbrjours(c.resultset.getInt("nbrjours"));
+				v.setHeuredep(c.resultset.getTime("heuredep"));
+				v.setDatedepart(c.resultset.getDate("datedep"));
+				v.setPlaces(c.resultset.getInt("nbrplaces"));
+				v.setPrice(c.resultset.getDouble("prix"));
+				
+				vs.add(v);
+			}
+			
+			return vs;
+		}
+		
 		public ArrayList<Voyage> getAllVoyages() throws SQLException{
 			ArrayList<Voyage> voyages = new ArrayList<>();
 			String query = "Select * From voyages;";
 			c.resultset = c.statement.executeQuery(query);
 			
 			while(c.resultset.next()) {
-				String idvoyage = c.resultset.getString("idvoyage");
-				String nomvoyage= c.resultset.getString("nomvoyage");
+				/*String idvoyage = c.resultset.getString("idvoyage");
+				//String nomvoyage= c.resultset.getString("nomvoyage");
 				int nbrplaces = c.resultset.getInt("nbrplaces");
 				double prix = c.resultset.getDouble("prix");
 				java.sql.Time heuredep = c.resultset.getTime("heuredep");
 				java.sql.Date datedep = c.resultset.getDate("datedep");
-				int nbrjour = c.resultset.getInt("nbrjours");
+				int nbrjour = c.resultset.getInt("nbrjours");**/
+				
 				int idcircuit = c.resultset.getInt("idcircuit");
 				
 				Voyage voyage = new Voyage();
-				voyage.setIdvoy(idvoyage);voyage.setNom(nomvoyage);voyage.setPlaces(nbrplaces);
-				voyage.setPrice(prix); voyage.setHeuredep(heuredep); voyage.setDatedepart(datedep);
-				voyage.setNbrjours(nbrjour);
+				voyage.setIdvoy(c.resultset.getString("idvoyage"));
+				voyage.setNom(c.resultset.getString("nomvoyage"));
+				voyage.setPlaces(c.resultset.getInt("nbrplaces"));
+				voyage.setPrice(c.resultset.getDouble("prix"));
+				voyage.setHeuredep(c.resultset.getTime("heuredep"));
+				voyage.setDatedepart(c.resultset.getDate("datedep"));
+				voyage.setNbrjours(c.resultset.getInt("nbrjours"));
 				
 				voyages.add(voyage);
 			}
@@ -105,6 +130,7 @@ import modele.Voyage;
 			Voyage v = new Voyage();
 			v.setDist("Batna"); v.setPlaces(4); v.setPrice(2500.00);
 			
-			System.out.println(gv.ajouterVoyage(v));
+			//System.out.println(gv.ajouterVoyage(v));
+			System.out.println(gv.getVoyagesById("voy-214"));
 		}
 }

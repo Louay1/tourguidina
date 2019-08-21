@@ -1,20 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
-		pageEncoding="UTF-8"%>
-		
-		<%@page import="java.util.ArrayList"%>
-		<%@page import="classe.*"%>
-		<%@page import="modele.*"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+        
+<%@page import="modele.*"%>
+<%@page import="classe.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-
-	<!-- Style Sheets -->
+	<meta charset="UTF-8">
+	<title>Profile</title>
+		<!-- Style Sheets -->
 	<link rel="stylesheet" href="../Semantic-UI-master/dist/semantic.css">
 	<link rel="stylesheet" href="../Semantic-UI-master/dist/components/transition.css">
 	<link rel="stylesheet" href="../css/styles.css">
-	<!-- End of Style Sheets -->
-	<title>GuidiNa | Client | Voyages</title>
-	
+		
 	<!-- Script -->
 	<script src="../js/jquery.js">
 </script>
@@ -22,13 +22,14 @@
 </script>
 <script src="../js/main.js">
 </script>
-
-	<!-- End of Script -->
-	<meta charset="UTF-8">
+	
 </head>
-<body>	
+<body>
 
-		
+		<%
+			Client cl = new Client();
+			cl = (Client) session.getAttribute("client");
+		%>
 	
 	<!-- Navigation -->
 		<nav class="ui large top fixed hidden menu">
@@ -48,11 +49,6 @@
 		      </div>
 		    </div>
 		    <%}else{ %>
-		    
-		    <%
-				Client cl = new Client();
-				cl = (Client) session.getAttribute("client");
-			%>
 		    <div class="right menu">
 		        <div class="item">
 		        	<div class="ui dropdown">
@@ -70,59 +66,99 @@
 		</nav>
 		
 		<!-- End Of Navigation -->
-	<%
-		ArrayList<Voyage> allvoyages = new ArrayList<>();
-		allvoyages = (ArrayList<Voyage>) session.getAttribute("allvoyages");
-	%>
-	<h1 class="nos-voyages">Nos Voyages</h1>
-	<div class="ui container">
-		<div class="ui link centered special cards">
-		<% for(Voyage voyage : allvoyages){ %>
-			<div class="card">
-				<div class="blurring dimmable image">
-					<div class="ui dimmer">
+	<% if(request.getSession().getAttribute("client") != null){ %>
+	
+			<% 
+				ArrayList<Reservation> rs = new ArrayList<>();
+				rs = (ArrayList<Reservation>) session.getAttribute("rs");
+				ArrayList<Voyage> vs = new ArrayList<>();
+				vs = (ArrayList<Voyage>) session.getAttribute("vs");
+			
+			%>
+		
+		<div class="nos-voyages">
+			<h1>
+				Bienvenue Mr <%= cl.getPrenom()%>
+				
+			</h1>
+			
+			<%
+				for(Voyage v : vs){
+					out.println(v.getNbrjours());
+				}
+				
+			%>
+		</div>
+		<div class="ui container">
+			<div class="ui grid">
+				<div class="four wide column">
+					<div class="ui card">
+						<div class="image">
+							<img src="<%=cl.getImage()%>">
+						</div>
 						<div class="content">
-							<div class="center">
-								<div class="ui inverted button">
-									Reserver
-								</div>
-							</div>
+							<a class="header"><%= cl.getNom()%> <%=cl.getPrenom() %></a>
+							<div class="meta">
+						    	<i class="birthday cake icon"></i><span class="date">Date de Tarte : <%= cl.getBirthdate() %></span>
+						    </div>
+						    <div class="description">
+						    	<i class="barcode icon"></i>ID : <%= cl.getIdClient() %> <br>
+						    	<i class="venus mars icon"></i>Sexe : <%= cl.getSexe() %> <br>
+						    	<i class="address book icon"></i>Addresse : <%= cl.getAddress() %> <br>
+						    </div>
+						</div>
+						<div class="extra content">
+							<a>
+						    	<i class="chart line icon"></i>
+						     	<%= cl.getPoints() %>
+						    </a>
+						    <div class="right floated">
+								<i class="money bill alternate icon"></i>
+								<%= cl.getCredit() %>	    
+						    </div>
 						</div>
 					</div>
-					<img src="../pics/oran.jpeg">
 				</div>
-				<div class="content">
-					<div class="header"><%= voyage.getNom() %></div>
-					<div class="description">
-        				Heure : <%= voyage.getHeuredep() %>
-        				<br>
-        				Date : <%= voyage.getDatedepart() %>
-        				<br>
-        				Price : <%= voyage.getPrice() %>
-     				 </div>
-				</div>
-				<div class="extra content">
-					<span class="right floated">
-						<%= voyage.getNbrjours() %>
-					</span>
-					<span>
-						<i class="plane icon"></i>
-						<%= voyage.getPlaces() %>
-					</span>
+				<div class="twelve wide column">
+					<table class="ui striped table">
+						<thead>
+							<tr>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+					</table>
 				</div>
 			</div>
-			<%} %>
 		</div>
-	</div>
 	
-	<br><br>
-	
+	<%}else{ %>
+		<div class="ui very padded container grid">
+			<div class="sixteen wide column">
+				<div class="ui negative message nos-voyages">
+				<div class="header">
+					We are Sorry, you may not see this
+				</div>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+					Nam sed justo in neque blandit vulputate. 
+				</p>
+			</div>
+			</div>
+			
+		</div>
 		
+	<%} %>
+	
+	
 		<%@include file="signup.jsp" %>
 		<%@include file="signin.jsp" %>
 		
-		
-<div class="ui inverted vertical footer segment">
+	<br><br>
+	
+	<div class="ui inverted vertical footer segment">
     <div class="ui center aligned container">
       <div class="ui stackable inverted divided grid">
         <div class="three wide column">
@@ -166,7 +202,7 @@
         <a class="item" href="#">Privacy Policy</a>
       </div>
     </div>
-  </div>
+   </div> 
 	
 <script>
 	$('.dropdown').dropdown();
@@ -187,12 +223,6 @@
 		$(".ui.modal").modal({
 			closable: true
 		});
-	});
-	
-	$(function(){
-		$('.special.cards .image').dimmer({
-			on: 'hover'
-		})
 	});
 </script>
 
