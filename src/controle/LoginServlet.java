@@ -48,15 +48,15 @@ public class LoginServlet extends HttpServlet {
 			if(isIt) {
 				Client cl = new Client();
 				ArrayList<Reservation> rs = new ArrayList<>();
-				ArrayList<Voyage> vs = new ArrayList<>();
+				//ArrayList<Voyage> vs = new ArrayList<>();
 				cl = gc.getClientUsingEmail(email);
-				rs = gr.getAllResByClient(cl.getIdClient());
+				rs = gr.getVoyagesClient(cl.getIdClient());
 				String id = rs.get(0).getIdVoy();
 				System.out.println(id);
-				vs = gv.getVoyagesById(id);
+				//vs = gv.getVoyagesById(id);
 				session.setAttribute("client", cl);
 				session.setAttribute("rs", rs);
-				session.setAttribute("vs", vs);
+				//session.setAttribute("vs", vs);
 				response.sendRedirect("ClientSite/profile.jsp");
 			}
 			

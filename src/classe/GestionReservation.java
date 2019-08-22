@@ -18,7 +18,7 @@ public class GestionReservation {
 	
 	public boolean ajouterReservation(Reservation reservation) throws ClassNotFoundException, SQLException{
 		
-		String query = "Insert Into reservation(idres, prixpay, jourdep, heuredep, idcli) Values("+reservation.getIdRes()+","+reservation.getPrixpaye()+",'"+reservation.getDateDep()+"','"+reservation.getHeureDep()+"','"+reservation.getIdCli()+"');";
+		String query = "Insert Into reservation(idres, prixpay, jourdep, heuredep,idvoy, idcli) Values("+reservation.getIdRes()+","+reservation.getPrixpaye()+",'"+reservation.getDateDep()+"','"+reservation.getHeureDep()+"','"+reservation.getIdVoy()+"','"+reservation.getIdCli()+"');";
 		System.out.println(query);
 		int hum = c.statement.executeUpdate(query);
 		if(hum==1) {
@@ -37,14 +37,32 @@ public class GestionReservation {
 			Reservation res = new Reservation();
 			res.setIdRes(c.resultset.getInt("idres"));
 			res.setPrixpaye(c.resultset.getDouble("prixpay"));
-			res.setDateDep(c.resultset.getDate("jourdep"));
-			res.setHeureDep(c.resultset.getTime("heuredep"));
+			res.setDateDep(c.resultset.getString("jourdep"));
+			res.setHeureDep(c.resultset.getString("heuredep"));
 			res.setIdCli(c.resultset.getString("idcli"));
 			reservations.add(res);
 		}
 		
 		return reservations;
 	}
+	
+	public ArrayList<Reservation> getVoyagesClient (String id) throws SQLException, ClassNotFoundException{
+        c.resultset=c.statement.executeQuery("SELECT * FROM reservation, voyages, clients WHERE reservation.idvoy=voyages.idvoyage and reservation.idcli=clients.idclient and idcli like'"+id+"';");
+        ArrayList<Reservation> rvs = new ArrayList<>();
+        while(c.resultset.next()){
+        	Reservation r = new Reservation();
+            r.setIdRes(c.resultset.getInt("idres"));
+            r.setPrixpaye(c.resultset.getDouble("prix"));
+            r.setIdVoy(c.resultset.getString("idvoy"));
+            r.setHeureDep(c.resultset.getString("heuredep"));
+            r.setDateDep(c.resultset.getString("datedep"));
+            r.setResname(c.resultset.getString("nomvoyage"));
+            rvs.add(r);
+        }
+        return rvs;
+    }
+	
+	
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException{
 		GestionReservation gr = new GestionReservation();

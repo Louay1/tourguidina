@@ -125,6 +125,8 @@ public class GestionClient {
         
     }
 	
+	
+	
 	public Client getClientUsingEmail (String email) throws SQLException, ClassNotFoundException{
         c.resultset=c.statement.executeQuery("SELECT * FROM utilisateurs Join clients on utilisateurs.iduser=clients.idclient and email like'"+email+"';");
         if(c.resultset.next()){

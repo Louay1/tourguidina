@@ -5,9 +5,9 @@ import java.sql.Time;
 
 public class Reservation {
 	private int idRes;
-	private String idVoy, idCli, idManifest, idSitetou;
-	private Date dateDep;
-	private Time heureDep;	
+	private String idVoy, idCli, idManifest, idSitetou, resname;
+	private String dateDep;
+	private String heureDep;	
 	private double prixpaye;
 	
 	
@@ -15,8 +15,8 @@ public class Reservation {
 		super();
 	}
 	
-	public Reservation(int idRes, String idVoy, String idCli, String idManifest, String idSitetou, Date dateDep,
-			Time heureDep, double prixpaye) {
+	public Reservation(int idRes, String idVoy, String idCli, String idManifest, String idSitetou, String dateDep,
+			String heureDep, double prixpaye) {
 		super();
 		this.idRes = idRes;
 		this.idVoy = idVoy;
@@ -46,17 +46,17 @@ public class Reservation {
 	public void setIdCli(String idCli) {
 		this.idCli = idCli;
 	}
-	public Date getDateDep() {
+	public String getDateDep() {
 		return dateDep;
 	}
-	public void setDateDep(Date dateDep) {
-		this.dateDep = dateDep;
+	public void setDateDep(String date) {
+		this.dateDep = date;
 	}
-	public Time getHeureDep() {
+	public String getHeureDep() {
 		return heureDep;
 	}
-	public void setHeureDep(Time heureDep) {
-		this.heureDep = heureDep;
+	public void setHeureDep(String heuredep2) {
+		this.heureDep = heuredep2;
 	}
 	public double getPrixpaye() {
 		return prixpaye;
@@ -83,6 +83,14 @@ public class Reservation {
 
 	public void setIdSitetou(String idSitetou) {
 		this.idSitetou = idSitetou;
+	}
+
+	public String getResname() {
+		return resname;
+	}
+
+	public void setResname(String resname) {
+		this.resname = resname;
 	}
 	
 	

@@ -33,7 +33,7 @@
 	<!-- Navigation -->
 		<nav class="ui large top fixed hidden menu">
 		  <div class="ui container">
-		  	<a class="item"><img src="../pics/logo.png"></a>
+		  	<a class="item" href="../StatsServlet"><img src="../pics/logo.png"></a>
 		    <a class="item" href="../VoyagesServlet">Voyages</a>
 		    <a class="item" href="#manifest">Manifestations Culturelle</a>
 		    <a class="item" href="#sitetour">Sites Touristiques</a>
@@ -78,28 +78,52 @@
 	<div class="ui container">
 		<div class="ui link centered special cards">
 		<% for(Voyage voyage : allvoyages){ %>
-			<div class="card">
+			<form class="card" action="../BookingServlet">
 				<div class="blurring dimmable image">
 					<div class="ui dimmer">
 						<div class="content">
 							<div class="center">
-								<div class="ui inverted button">
+								<div class="ui inverted button reserver">
 									Reserver
 								</div>
 							</div>
 						</div>
+						
 					</div>
 					<img src="../pics/oran.jpeg">
 				</div>
 				<div class="content">
+					<input type="hidden" name="nomres" value="<%= voyage.getNom()%>">
 					<div class="header"><%= voyage.getNom() %></div>
 					<div class="description">
+						<input type="hidden" name="heuredep" value="<%= voyage.getHeuredep() %>">
         				Heure : <%= voyage.getHeuredep() %>
         				<br>
+        				<input type="hidden" name="datedep" value="<%= voyage.getDatedepart() %>">
         				Date : <%= voyage.getDatedepart() %>
         				<br>
+        				<input type="hidden" name="price" value="<%= voyage.getPrice() %>">
         				Price : <%= voyage.getPrice() %>
      				 </div>
+     				 <br>
+     				 <% if(request.getSession().getAttribute("client") != null){ %>
+     				 
+     				 <%
+						Client cl = new Client();
+						cl = (Client) session.getAttribute("client");
+					%>
+     				 <div>
+     				 	<input type="hidden" name ="idvoy" value="<%= voyage.getIdvoy()%>">
+     				 	<input type="hidden" name ="idcli" value="<%= cl.getIdClient()%>">
+     				 	<input type="submit" class="ui green button" value="Reserver">
+     				 </div>
+     				 <%}else{ %>
+     				 	<div class="ui negative message">
+							<p>
+								Sign up / Sign in to Book this voyage 
+							</p>
+						</div>
+     				 <%} %>
 				</div>
 				<div class="extra content">
 					<span class="right floated">
@@ -110,13 +134,14 @@
 						<%= voyage.getPlaces() %>
 					</span>
 				</div>
-			</div>
+			</form>
 			<%} %>
 		</div>
 	</div>
 	
 	<br><br>
-	
+		
+		
 		
 		<%@include file="signup.jsp" %>
 		<%@include file="signin.jsp" %>
@@ -179,7 +204,7 @@
 			closable: true
 		});
 	});
-
+	
 	$(function(){
 		$("#signins").click(function(){
 			$(".sign-in").modal('show');
@@ -194,6 +219,15 @@
 			on: 'hover'
 		})
 	});
+	
+	$(function(){
+		$('.reserver').popup({
+			popup: $('.flowing.popoup'),
+			on: 'click'
+		})
+	});
+	
+	
 </script>
 
 

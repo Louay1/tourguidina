@@ -34,7 +34,7 @@
 	<!-- Navigation -->
 		<nav class="ui large top fixed hidden menu">
 		  <div class="ui container">
-		  	<a class="item"><img src="../pics/logo.png"></a>
+		  	<a class="item" href="../StatsServlet"><img src="../pics/logo.png"></a>
 		    <a class="item" href="../VoyagesServlet">Voyages</a>
 		    <a class="item" href="#manifest">Manifestations Culturelle</a>
 		    <a class="item" href="#sitetour">Sites Touristiques</a>
@@ -71,8 +71,7 @@
 			<% 
 				ArrayList<Reservation> rs = new ArrayList<>();
 				rs = (ArrayList<Reservation>) session.getAttribute("rs");
-				ArrayList<Voyage> vs = new ArrayList<>();
-				vs = (ArrayList<Voyage>) session.getAttribute("vs");
+				
 			
 			%>
 		
@@ -82,12 +81,7 @@
 				
 			</h1>
 			
-			<%
-				for(Voyage v : vs){
-					out.println(v.getNbrjours());
-				}
-				
-			%>
+
 		</div>
 		<div class="ui container">
 			<div class="ui grid">
@@ -123,12 +117,32 @@
 					<table class="ui striped table">
 						<thead>
 							<tr>
-								<th></th>
-								<th></th>
-								<th></th>
-								<th></th>
+								<th>ID Reservation</th>
+								<th>ID Voyage</th>
+								<th>Nom de Reservation</th>
+								<th>Heure Depart</th>
+								<th>Date Depart</th>
+								<th>Prix</th>
+								<th>Action</th>
 							</tr>
 						</thead>
+						<tbody>
+							<%
+							for(Reservation r : rs){
+							%>
+							<tr>
+								<td><%= r.getIdRes() %></td>
+								<td><%= r.getIdVoy() %></td>
+								<td><%= r.getResname() %></td>
+								<td><%= r.getHeureDep() %></td>
+								<td><%= r.getDateDep() %></td>
+								<td><%= r.getPrixpaye() %></td>
+								<td>
+									<a class="ui red button">Annuler</a>
+								</td>
+							</tr>
+							<%} %>
+						</tbody>
 					</table>
 				</div>
 			</div>
@@ -138,14 +152,14 @@
 		<div class="ui very padded container grid">
 			<div class="sixteen wide column">
 				<div class="ui negative message nos-voyages">
-				<div class="header">
-					We are Sorry, you may not see this
-				</div>
-				<p>
+					<div class="header">
+						We are Sorry, you may not see this
+					</div>
+					<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 					Nam sed justo in neque blandit vulputate. 
-				</p>
-			</div>
+					</p>
+				</div>
 			</div>
 			
 		</div>
