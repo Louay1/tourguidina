@@ -79,7 +79,6 @@ import modele.Voyage;
 				v.setDatedepart(c.resultset.getDate("datedep"));
 				v.setPlaces(c.resultset.getInt("nbrplaces"));
 				v.setPrice(c.resultset.getDouble("prix"));
-				
 				vs.add(v);
 			}
 			 

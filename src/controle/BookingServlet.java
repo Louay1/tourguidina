@@ -59,7 +59,7 @@ public class BookingServlet extends HttpServlet {
 			res.setPrixpaye(prix);
 			
 			gr.ajouterReservation(res);
-			response.sendRedirect("ClientSite/voyages.jsp");
+			response.sendRedirect("ClientSite/manifest.jsp");
 			
 		}catch(ClassNotFoundException | SQLException e) {
 			System.out.println(e.getMessage());

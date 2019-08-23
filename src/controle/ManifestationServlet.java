@@ -11,19 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import classe.*;
-import modele.*;
+import classe.GestionManifestation;
+import modele.Manifestation;
+
 /**
- * Servlet implementation class VoyagesServlet
+ * Servlet implementation class ManifestationServlet
  */
-@WebServlet("/VoyagesServlet")
-public class VoyagesServlet extends HttpServlet {
+@WebServlet("/ManifestationServlet")
+public class ManifestationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VoyagesServlet() {
+    public ManifestationServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,15 +34,13 @@ public class VoyagesServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			HttpSession session=request.getSession();
-			GestionAdmin ga = new GestionAdmin();
-			GestionVoyage gv = new GestionVoyage();
-			ArrayList<Voyage> allvoyages = new ArrayList<>();
-			allvoyages = gv.getAllVoyages();
-			session.setAttribute("allvoyages", allvoyages);
-			//System.out.println(response);
-			response.sendRedirect("ClientSite/voyages.jsp");
-			System.out.println(response);
+			HttpSession session = request.getSession();
+			GestionManifestation gm = new GestionManifestation();
+			ArrayList<Manifestation> allmanifestation = new ArrayList<>();
+			allmanifestation = gm.getAllManifest();
+			session.setAttribute("allmanifestation", allmanifestation);
+			response.sendRedirect("ClientSite/manifest.jsp");
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -54,13 +53,5 @@ public class VoyagesServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		GestionVoyage gv = new GestionVoyage();
-		ArrayList<Voyage> allvoyages = new ArrayList<>();
-		allvoyages = gv.getAllVoyages();
-		for(Voyage voyage : allvoyages) {
-			System.out.println(voyage.getNom());
-		}
-	}
+
 }

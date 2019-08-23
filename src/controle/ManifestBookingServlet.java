@@ -2,28 +2,27 @@ package controle;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import classe.*;
-import modele.*;
+import classe.GestionReservation;
+import modele.Reservation;
+
 /**
- * Servlet implementation class VoyagesServlet
+ * Servlet implementation class ManifestBookingServlet
  */
-@WebServlet("/VoyagesServlet")
-public class VoyagesServlet extends HttpServlet {
+@WebServlet("/ManifestBookingServlet")
+public class ManifestBookingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VoyagesServlet() {
+    public ManifestBookingServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,19 +31,34 @@ public class VoyagesServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String idvoy = request.getParameter("idvoy");
+		String manifest = request.getParameter("idmanifest");
+		String resnom = request.getParameter("nomres");
+		String heuredep = request.getParameter("heuredep");
+		String idcli = request.getParameter("idcli");
+		String datedep =  request.getParameter("datedep");
+		double prix = Double.parseDouble(request.getParameter("fees"));
+		
+		Reservation res = new Reservation();
+		
+		GestionReservation gr;
 		try {
-			HttpSession session=request.getSession();
-			GestionAdmin ga = new GestionAdmin();
-			GestionVoyage gv = new GestionVoyage();
-			ArrayList<Voyage> allvoyages = new ArrayList<>();
-			allvoyages = gv.getAllVoyages();
-			session.setAttribute("allvoyages", allvoyages);
-			//System.out.println(response);
-			response.sendRedirect("ClientSite/voyages.jsp");
-			System.out.println(response);
+			gr = new GestionReservation();
+			res.setIdVoy(idvoy);
+			res.setResname(resnom);
+			res.setDateDep(datedep);
+			res.setHeureDep(heuredep);
+			res.setIdCli(idcli);
+			res.setIdManifest(manifest);
+			res.setPrixpaye(prix);
+			
+			gr.ajouterReservationM(res);
+			response.sendRedirect("ClientSite/manifest.jsp");
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		
 	}
 
 	/**
@@ -54,13 +68,5 @@ public class VoyagesServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		GestionVoyage gv = new GestionVoyage();
-		ArrayList<Voyage> allvoyages = new ArrayList<>();
-		allvoyages = gv.getAllVoyages();
-		for(Voyage voyage : allvoyages) {
-			System.out.println(voyage.getNom());
-		}
-	}
+
 }

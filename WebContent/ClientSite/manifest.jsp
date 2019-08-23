@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="../Semantic-UI-master/dist/components/transition.css">
 	<link rel="stylesheet" href="../css/styles.css">
 	<!-- End of Style Sheets -->
-	<title>GuidiNa | Client | Voyages</title>
+	<title>GuidiNa | Client | Manifest</title>
 	
 	<!-- Script -->
 	<script src="../js/jquery.js">
@@ -70,15 +70,16 @@
 		</nav>
 		
 		<!-- End Of Navigation -->
-	<%
-		ArrayList<Voyage> allvoyages = new ArrayList<>();
-		allvoyages = (ArrayList<Voyage>) session.getAttribute("allvoyages");
+		
+		<%
+		ArrayList<Manifestation> allmanifestation = new ArrayList<>();
+		allmanifestation = (ArrayList<Manifestation>) session.getAttribute("allmanifestation");
 	%>
-	<h1 class="nos-voyages">Nos Voyages</h1>
+	<h1 class="nos-voyages">Nos Manifestations</h1>
 	<div class="ui container">
 		<div class="ui link centered special cards">
-		<% for(Voyage voyage : allvoyages){ %>
-			<form class="card" action="../BookingServlet">
+		<% for(Manifestation manifest : allmanifestation){ %>
+			<form class="card" action="../ManifestBookingServlet">
 				<div class="blurring dimmable image">
 					<div class="ui dimmer">
 						<div class="content">
@@ -93,17 +94,18 @@
 					<img src="../pics/oran.jpeg">
 				</div>
 				<div class="content">
-					<input type="hidden" name="nomres" value="<%= voyage.getNom()%>">
-					<div class="header"><%= voyage.getNom() %></div>
+					<input type="hidden" name="nomres" value="<%= manifest.getNommanifest() %>">
+					<input type="hidden" name="idmanifest" value="<%= manifest.getIdmanifest() %>">
+					<div class="header"><%= manifest.getNommanifest() %></div>
 					<div class="description">
-						<input type="hidden" name="heuredep" value="<%= voyage.getHeuredep() %>">
-        				Heure : <%= voyage.getHeuredep() %>
+						<input type="hidden" name="heuredep" value="<%= manifest.getHeure() %>">
+        				Heure : <%= manifest.getHeure() %> <%= manifest.getIdmanifest() %>
         				<br>
-        				<input type="hidden" name="datedep" value="<%= voyage.getDatedepart() %>">
-        				Date : <%= voyage.getDatedepart() %>
+        				<input type="hidden" name="datedep" value="<%= manifest.getDatefin() %>">
+        				Date : <%= manifest.getDatefin() %>
         				<br>
-        				<input type="hidden" name="price" value="<%= voyage.getPrice() %>">
-        				Price : <%= voyage.getPrice() %>
+        				<input type="hidden" name="fees" value="<%= manifest.getFees() %>">
+        				Price : <%= manifest.getFees() %>
      				 </div>
      				 <br>
      				 <% if(request.getSession().getAttribute("client") != null){ %>
@@ -113,7 +115,7 @@
 						cl = (Client) session.getAttribute("client");
 					%>
      				 <div>
-     				 	<input type="hidden" name ="idvoy" value="<%= voyage.getIdvoy()%>">
+     				 	<input type="hidden" name ="idvoy" value="<%= manifest.getIdvoy()%>">
      				 	<input type="hidden" name ="idcli" value="<%= cl.getIdClient()%>">
      				 	<input type="submit" class="ui green button" value="Reserver">
      				 </div>
@@ -127,11 +129,11 @@
 				</div>
 				<div class="extra content">
 					<span class="right floated">
-						<%= voyage.getNbrjours() %>
+						<%= manifest.getHeurefin() %>
 					</span>
 					<span>
-						<i class="plane icon"></i>
-						<%= voyage.getPlaces() %>
+						<i class="quidditch icon"></i>
+						<%= manifest.getIdville() %>
 					</span>
 				</div>
 			</form>
@@ -140,6 +142,12 @@
 	</div>
 	
 	<br><br>
+		
+		
+		
+		
+		
+		
 		
 		
 		

@@ -36,7 +36,7 @@
 		  <div class="ui container">
 		  	<a class="item" href="../StatsServlet"><img src="../pics/logo.png"></a>
 		    <a class="item" href="../VoyagesServlet">Voyages</a>
-		    <a class="item" href="#manifest">Manifestations Culturelle</a>
+		    <a class="item" href="../ManifestationServlet">Manifestations Culturelle</a>
 		    <a class="item" href="#sitetour">Sites Touristiques</a>
 		    <a class="item" href="#services">Services</a>
 		    <%if(request.getSession().getAttribute("client") == null){ %>
@@ -55,7 +55,7 @@
 		        		<img class="ui avatar image" src="<%=cl.getImage()%>"> <%= cl.getNom() %>
 		        		<i class="icon dropdown"></i>
 		        		<div class="menu">
-		        			<div class="item"><a href="../LoginServlet">Profile</a></div>
+		        			<div class="item"><a href="../ProfileRouterServlet">Profile</a></div>
 		        			<div class="item"><a href="../LogoutServlet">Logout</a></div>
 		        		</div>
 		        	</div>
@@ -71,8 +71,9 @@
 			<% 
 				ArrayList<Reservation> rs = new ArrayList<>();
 				rs = (ArrayList<Reservation>) session.getAttribute("rs");
+				ArrayList<Reservation> ms = new ArrayList<>();
+				ms = (ArrayList<Reservation>) session.getAttribute("ms");
 				
-			
 			%>
 		
 		<div class="nos-voyages">
@@ -114,7 +115,7 @@
 					</div>
 				</div>
 				<div class="twelve wide column">
-					<table class="ui striped table">
+					<table class="ui inverted red striped table">
 						<thead>
 							<tr>
 								<th>ID Reservation</th>
@@ -138,7 +139,38 @@
 								<td><%= r.getDateDep() %></td>
 								<td><%= r.getPrixpaye() %></td>
 								<td>
-									<a class="ui red button">Annuler</a>
+									<a class="ui button">Annuler</a>
+								</td>
+							</tr>
+							<%} %>
+						</tbody>
+					</table>
+					<br><br>
+					<table class="ui inverted orange striped table">
+						<thead>
+							<tr>
+								<th>ID Reservation</th>
+								<th>ID Manifestation</th>
+								<th>Nom de Reservation</th>
+								<th>Heure Depart</th>
+								<th>Date Depart</th>
+								<th>Prix</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%
+							for(Reservation m : ms){
+							%>
+							<tr>
+								<td><%= m.getIdRes() %></td>
+								<td><%= m.getIdManifest() %></td>
+								<td><%= m.getResname() %></td>
+								<td><%= m.getHeureDep() %></td>
+								<td><%= m.getDateDep() %></td>
+								<td><%= m.getPrixpaye() %></td>
+								<td>
+									<a class="ui button">Annuler</a>
 								</td>
 							</tr>
 							<%} %>

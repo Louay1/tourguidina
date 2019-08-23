@@ -32,11 +32,12 @@
 	<!-- Navigation -->
 		<nav class="ui large top fixed hidden menu">
 		  <div class="ui container">
-		  	<a class="item"><img src="../pics/logo.png"></a>
+		  	<a class="item" href="../StatsServlet"><img src="../pics/logo.png"></a>
 		    <a class="item" href="../VoyagesServlet">Voyages</a>
-		    <a class="item" href="#manifest">Manifestations Culturelle</a>
+		    <a class="item" href="../ManifestationServlet">Manifestations Culturelle</a>
 		    <a class="item" href="#sitetour">Sites Touristiques</a>
 		    <a class="item" href="#services">Services</a>
+		    <%if(request.getSession().getAttribute("client") == null){ %>
 		    <div class="right menu">
 		       <div class="item">
 		        <a class="ui button" id="signins">Log in</a>
@@ -45,6 +46,25 @@
 		        <a class="ui primary button" id="signups">Sign Up</a>
 		      </div>
 		    </div>
+		    <%}else{ %>
+		    
+		    <%
+				Client cl = new Client();
+				cl = (Client) session.getAttribute("client");
+			%>
+		    <div class="right menu">
+		        <div class="item">
+		        	<div class="ui dropdown">
+		        		<img class="ui avatar image" src="<%=cl.getImage()%>"> <%= cl.getNom() %>
+		        		<i class="icon dropdown"></i>
+		        		<div class="menu">
+		        			<div class="item"><a href="../ProfileRouterServlet">Profile</a></div>
+		        			<div class="item"><a href="../LogoutServlet">Logout</a></div>
+		        		</div>
+		        	</div>
+		    	</div>
+		    </div>
+		    <%} %>
 		  </div>
 		</nav>
 		
