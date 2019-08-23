@@ -35,7 +35,7 @@
 		  	<a class="item" href="../StatsServlet"><img src="../pics/logo.png"></a>
 		    <a class="item" href="../VoyagesServlet">Voyages</a>
 		    <a class="item" href="../ManifestationServlet">Manifestations Culturelle</a>
-		    <a class="item" href="#sitetour">Sites Touristiques</a>
+		    <a class="item" href="../SiteTouristiqueServlet">Sites Touristiques</a>
 		    <a class="item" href="#services">Services</a>
 		    <%if(request.getSession().getAttribute("client") == null){ %>
 		    <div class="right menu">

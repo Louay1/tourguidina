@@ -37,7 +37,7 @@
 		  	<a class="item" href="../StatsServlet"><img src="../pics/logo.png"></a>
 		    <a class="item" href="../VoyagesServlet">Voyages</a>
 		    <a class="item" href="../ManifestationServlet">Manifestations Culturelle</a>
-		    <a class="item" href="#sitetour">Sites Touristiques</a>
+		    <a class="item" href="../SiteTouristiqueServlet">Sites Touristiques</a>
 		    <a class="item" href="#services">Services</a>
 		    <%if(request.getSession().getAttribute("client") == null){ %>
 		    <div class="right menu">
@@ -73,6 +73,8 @@
 				rs = (ArrayList<Reservation>) session.getAttribute("rs");
 				ArrayList<Reservation> ms = new ArrayList<>();
 				ms = (ArrayList<Reservation>) session.getAttribute("ms");
+				ArrayList<Reservation> st = new ArrayList<>();
+				st = (ArrayList<Reservation>) session.getAttribute("st");
 				
 			%>
 		
@@ -115,6 +117,7 @@
 					</div>
 				</div>
 				<div class="twelve wide column">
+					<h2>Vos Voyages</h2>
 					<table class="ui inverted red striped table">
 						<thead>
 							<tr>
@@ -146,6 +149,8 @@
 						</tbody>
 					</table>
 					<br><br>
+					
+					<h2>Vos Manifestations</h2>
 					<table class="ui inverted orange striped table">
 						<thead>
 							<tr>
@@ -169,6 +174,40 @@
 								<td><%= m.getHeureDep() %></td>
 								<td><%= m.getDateDep() %></td>
 								<td><%= m.getPrixpaye() %></td>
+								<td>
+									<a class="ui button">Annuler</a>
+								</td>
+							</tr>
+							<%} %>
+						</tbody>
+					</table>
+					<br><br>
+					
+					
+					<h2>Vos Manifestations</h2>
+					<table class="ui inverted yellow striped table">
+						<thead>
+							<tr>
+								<th>ID Reservation</th>
+								<th>ID Site Touristique</th>
+								<th>Nom de Reservation</th>
+								<th>Heure Depart</th>
+								<th>heure Fin</th>
+								<th>Prix</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%
+							for(Reservation s : st){
+							%>
+							<tr>
+								<td><%= s.getIdRes() %></td>
+								<td><%= s.getIdSitetou() %></td>
+								<td><%= s.getResname() %></td>
+								<td><%= s.getHeureDep() %></td>
+								<td><%= s.getDateDep() %></td>
+								<td><%= s.getPrixpaye() %></td>
 								<td>
 									<a class="ui button">Annuler</a>
 								</td>

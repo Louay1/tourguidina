@@ -41,6 +41,19 @@ public class GestionReservation {
 			return false;
 		}
 	}
+	
+	public boolean ajouterReservationST(Reservation reservation) throws ClassNotFoundException, SQLException{
+		
+		String query = "Insert Into reservation(idres, prixpay, heuredep,idvoy,idsitetour, idcli) Values("+reservation.getIdRes()+","+reservation.getPrixpaye()+",'"+reservation.getHeureDep()+"','"+reservation.getIdVoy()+"','"+reservation.getIdSitetou()+"','"+reservation.getIdCli()+"');";
+		System.out.println(query);
+		int hum = c.statement.executeUpdate(query);
+		if(hum==1) {
+			return true;
+		}else {
+			System.out.println("Not inserted");
+			return false;
+		}
+	}
 		
 	public ArrayList<Reservation> getAllResByClient(String idcl) throws ClassNotFoundException, SQLException{
 		String query = "Select * From reservation where idcli like '"+idcl+"';";
@@ -70,6 +83,22 @@ public class GestionReservation {
             r.setHeureDep(c.resultset.getString("heuredep"));
             r.setDateDep(c.resultset.getString("datedep"));
             r.setResname(c.resultset.getString("nomvoyage"));
+            rvs.add(r);
+        }
+        return rvs;
+    }
+	
+	public ArrayList<Reservation> getSitesClient (String id) throws SQLException, ClassNotFoundException{
+        c.resultset=c.statement.executeQuery("SELECT * FROM reservation, sitetouristiques, clients WHERE reservation.idsitetour=sitetouristiques.idsitetour and reservation.idcli=clients.idclient and idcli like'"+id+"';");
+        ArrayList<Reservation> rvs = new ArrayList<>();
+        while(c.resultset.next()){
+        	Reservation r = new Reservation();
+            r.setIdRes(c.resultset.getInt("idres"));
+            r.setPrixpaye(c.resultset.getDouble("prix"));
+            r.setIdSitetou(c.resultset.getString("idsitetour"));
+            r.setHeureDep(c.resultset.getString("heuredep"));
+            r.setDateDep(c.resultset.getString("heurefin"));
+            r.setResname(c.resultset.getString("nomsitetour"));
             rvs.add(r);
         }
         return rvs;

@@ -20,7 +20,7 @@ public class GestionManifestation {
 		c.resultset = c.statement.executeQuery(query);
 		while(c.resultset.next()) {
 			Manifestation m = new Manifestation();
-			m.setIdvoy(c.resultset.getString("idmnifest"));
+			m.setIdmanifest(c.resultset.getString("idmnifest"));
 			m.setNommanifest(c.resultset.getString("nommanifest"));
 			m.setAddress(c.resultset.getString("adr"));
 			m.setNbrjour(c.resultset.getInt("nbrjour"));
