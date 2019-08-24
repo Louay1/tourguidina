@@ -10,21 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import classe.GestionUtilisateur;
-import modele.Client;
+import classe.GestionAgent;
+import modele.Agent;
 import modele.Utilisateur;
 
 /**
- * Servlet implementation class RegisterServlet
+ * Servlet implementation class AgentLoginServlet
  */
-@WebServlet("/RegisterServlet")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/AgentLoginServlet")
+public class AgentLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegisterServlet() {
+    public AgentLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,42 +33,42 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nom = request.getParameter("nom");
-		String prenom = request.getParameter("prenom");
-		String birthdate = request.getParameter("birthdate");
 		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
-		String sexe = request.getParameter("sexe");
-		String address = request.getParameter("address");
-		//int ville = Integer.parseInt(request.getParameter("ville"));
 		
-		//HttpSession session = request.getSession();
+		System.out.println(email+" "+password+"0");
+		
 		Utilisateur user = new Utilisateur();
+		user.setEmail(email); user.setMotPasse(password);
+		HttpSession session = request.getSession();
+		System.out.println(email+" "+password+"1");
+		
 		try {
-			GestionUtilisateur gu = new GestionUtilisateur();
-			user.setIdUsr(gu.keyGen());
-			user.setNom(nom);
-			user.setPrenom(prenom);
-			user.setBirthdate(birthdate);
-			user.setAddress(address);
-			user.setImage("Hehe Nice try");
-			user.setMotPasse(password);
-			user.setNumTlphn(phone);
-			user.setEmail(email);
-			user.setSexe(sexe);
-			user.setVille(19);
+			System.out.println(email+" "+password+"2");
+			GestionAgent ga = new GestionAgent();
 			
-			System.out.println(nom+" "+email);
-			System.out.println(user.getIdUsr());
-			gu.ajouterUtilisateur(user);
-			gu.ajouterClient(user.getIdUsr());
-			response.sendRedirect("ClientSite/index.jsp");
+			System.out.println(email+" "+password+"3");
+			
+			
+			boolean isIt = ga.loginAgent(user);
+			
+			System.out.println(email+" "+password+"4");
+			if(isIt) {
+				System.out.println(email+" "+password+"5");
+				Agent ag = new Agent();
+				
+				System.out.println(email+" "+password+"6");
+				
+				ag = ga.getAgentUsingEmail(email);
+				
+				System.out.println(email+" "+password+"7");
+				session.setAttribute("ag", ag);
+				response.sendRedirect("AgentSite/profile.jsp");
+			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println(e.getMessage());
+			// TODO: handle exception
 		}
-		
 	}
 
 	/**

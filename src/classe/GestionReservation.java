@@ -104,6 +104,17 @@ public class GestionReservation {
         return rvs;
     }
 	
+		public boolean deleteBooking(int res) throws ClassNotFoundException, SQLException {
+			String query = "delete from reservation where idres="+res+";";
+			int humm = c.statement.executeUpdate(query);
+			if(humm == 1) {
+				System.out.println(query);
+				return true;
+			}else {
+				System.out.println("Not Deleted");
+				return false;
+			}
+		}
 	public ArrayList<Reservation> getManifestClient (String id) throws SQLException, ClassNotFoundException{
         c.resultset=c.statement.executeQuery("SELECT * FROM reservation, manifestations, clients WHERE reservation.idmanifest=manifestations.idmnifest and reservation.idcli=clients.idclient and idcli like'"+id+"';");
         ArrayList<Reservation> rvs = new ArrayList<>();

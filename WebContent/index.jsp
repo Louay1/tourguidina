@@ -17,10 +17,10 @@
 	    			<div class="column">
 	    				<div class="ui link card">
 	    					<a class="image" href="StatsServlet">
-	    						<img src="pics/admin.png">
+	    						<img src="pics/client.png">
 	    					</a>
 	    					<div class="content center">
-	    						 <a class="header" href="StatsServlet">Admin</a>
+	    						 <a class="header" href="StatsServlet">Client</a>
 	    					</div>
 	    				</div>
 	    				
@@ -28,11 +28,11 @@
 	    			
 	    			<div class="column">
 	    				<div class="ui link card">
-	    				<a class="image" href="StatsServlet">
+	    				<a class="image" href="ToAgentSiteServlet">
 	    						<img src="pics/agent.png">
 	    					</a>
 	    					<div class="content center">
-	    						 <a class="header">Agent</a>
+	    						 <a class="header" href="ToAgentSiteServlet">Agent</a>
 	    					</div>
 	    				</div>
 	    			</div>
@@ -43,7 +43,7 @@
 	    						<img src="pics/client.png">
 	    					</a>
 	    					<div class="content center">
-	    						 <a class="header">Client</a>
+	    						 <a class="header">Admin</a>
 	    					</div>
 	    				</div>
 	    			</div>

@@ -112,13 +112,16 @@
 						    <div class="right floated">
 								<i class="money bill alternate icon"></i>
 								<%= cl.getCredit() %>	    
-						    </div>
+						    </div> <br>
+						    <a>
+								<i class="terminal icon"></i> Coded By Der Hauptmann from Kodzaders
+							</a>
 						</div>
 					</div>
 				</div>
 				<div class="twelve wide column">
 					<h2>Vos Voyages</h2>
-					<table class="ui inverted red striped table">
+					<table class="ui inverted green striped table">
 						<thead>
 							<tr>
 								<th>ID Reservation</th>
@@ -151,7 +154,7 @@
 					<br><br>
 					
 					<h2>Vos Manifestations</h2>
-					<table class="ui inverted orange striped table">
+					<table class="ui inverted teal striped table">
 						<thead>
 							<tr>
 								<th>ID Reservation</th>
@@ -175,7 +178,11 @@
 								<td><%= m.getDateDep() %></td>
 								<td><%= m.getPrixpaye() %></td>
 								<td>
-									<a class="ui button">Annuler</a>
+									<form action="../CancelReservationServlet">
+										<input type="hidden" name="idres" value="<%= m.getIdRes() %>">
+										<input type="submit" class="ui button" value="Annuler">
+									</form>
+									
 								</td>
 							</tr>
 							<%} %>
@@ -185,7 +192,7 @@
 					
 					
 					<h2>Vos Manifestations</h2>
-					<table class="ui inverted yellow striped table">
+					<table class="ui inverted blue striped table">
 						<thead>
 							<tr>
 								<th>ID Reservation</th>

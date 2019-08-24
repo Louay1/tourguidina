@@ -1,18 +1,29 @@
 package modele;
 
-import modele.Organiser;
 
 public class Circuit {
-	private int id, places;
-	private String name, locations;
-	private double price;
-	private Organiser organiser;
-	private Transport transport;
-	
-	
+	private int id;
+	private String name, startpoint,  endponit;
+
 
 	public Circuit() {
 		super();
+	}
+
+	public String getStartpoint() {
+		return startpoint;
+	}
+
+	public void setStartpoint(String startpoint) {
+		this.startpoint = startpoint;
+	}
+
+	public String getEndponit() {
+		return endponit;
+	}
+
+	public void setEndponit(String endponit) {
+		this.endponit = endponit;
 	}
 
 	public int getId() {
@@ -23,14 +34,6 @@ public class Circuit {
 		this.id = id;
 	}
 
-	public int getPlaces() {
-		return places;
-	}
-
-	public void setPlaces(int places) {
-		this.places = places;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -39,37 +42,8 @@ public class Circuit {
 		this.name = name;
 	}
 
-	public String getLocations() {
-		return locations;
-	}
-
-	public void setLocations(String locations) {
-		this.locations = locations;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
 	
-	public Organiser getOrganiser() {
-		return organiser;
-	}
-
-	public void setOrganiser(Organiser organiser) {
-		this.organiser = organiser;
-	}
-
-	public Transport getTransport() {
-		return transport;
-	}
-
-	public void setTransport(Transport transport) {
-		this.transport = transport;
-	}
+	
 	
 	
 }

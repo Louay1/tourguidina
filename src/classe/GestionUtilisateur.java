@@ -1,6 +1,7 @@
 package classe;
 
 
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import modele.*;
@@ -18,11 +19,11 @@ public class GestionUtilisateur {
 		if(c.resultset.next()) {
 			Utilisateur user = new Utilisateur();
 			user.setIdUsr(c.resultset.getString("iduser"));
-			user.setNom(c.resultset.getString("name"));
+			user.setNom(c.resultset.getString("nom"));
 			user.setEmail(c.resultset.getString("email"));
-			user.setMotPasse(c.resultset.getString("password"));
+			user.setMotPasse(c.resultset.getString("motpass"));
 			user.setNumTlphn(c.resultset.getString("phone"));
-			user.setSexe(c.resultset.getString("sex"));
+			user.setSexe(c.resultset.getString("sexe"));
 			
 			return user;
 			
@@ -34,18 +35,43 @@ public class GestionUtilisateur {
 	public boolean ajouterUtilisateur(Utilisateur user) throws ClassNotFoundException, SQLException{
 		
 		if(user.getEmail().contentEquals("vide")) {
-			int res = c.statement.executeUpdate("Insert Into utilisateurs Values('"+keyGen()+"','"+user.getNom()+"','"+user.getPrenom()+"','"+user.getBirthdate()+"','"+user.getSexe()+"','"+user.getAddress()+"','"+user.getImage()+"','"+user.getMotPasse()+"','"+user.getEmail()+"','"+user.getNumTlphn()+"',"+user.getVille()+");");
+			c.statement.executeUpdate("Insert Into utilisateurs(iduser, nom, prenom, birthedate, sexe, address, image, motpass, email, phone, idville) Values('"+user.getIdUsr()+"','"+user.getNom()+"','"+user.getPrenom()+"','"+user.getBirthdate()+"','"+user.getSexe()+"','"+user.getAddress()+"','"+user.getImage()+"','"+user.getMotPasse()+"','"+user.getEmail()+"','"+user.getNumTlphn()+"',"+user.getVille()+");");
+			c.connection.close();
+			c.resultset.close();
+			c.statement.close();
 			return true;
 		}else {
 			if(chercherUtilisateur(user.getEmail()) != null) {
+				c.connection.close();
+				c.resultset.close();
+				c.statement.close();
 				return false;
+				
+
 			}else {
-				int res = c.statement.executeUpdate("Insert Into utilisateurs Values('"+keyGen()+"','"+user.getNom()+"','"+user.getPrenom()+"','"+user.getBirthdate()+"','"+user.getSexe()+"','"+user.getAddress()+"','"+user.getImage()+"','"+user.getMotPasse()+"','"+user.getEmail()+"','"+user.getNumTlphn()+"',"+user.getVille()+");");
-				System.out.println(res==1);
-				return res==1;
+				c.statement.executeUpdate("Insert Into utilisateurs  Values('"+user.getIdUsr()+"','"+user.getNom()+"','"+user.getPrenom()+"','"+user.getBirthdate()+"','"+user.getSexe()+"','"+user.getAddress()+"','"+user.getImage()+"','"+user.getMotPasse()+"','"+user.getEmail()+"','"+user.getNumTlphn()+"',"+user.getVille()+");");
+				c.connection.close();
+				c.resultset.close();
+				c.statement.close();
+				return true;
 			}
 		}
 	}
+	
+	public boolean ajouterClient(String iduser) throws ClassNotFoundException, SQLException{
+		String query = "Insert into clients(idclient, points, credit) values('"+iduser+"', 0, 100000);";
+		c.connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/l3guidina","root","mynewpassword");
+		c.statement=c.connection.createStatement();
+		int isit = c.statement.executeUpdate(query);
+		if(isit == 1) {
+			System.out.println(query);
+			return true;
+		}else {
+			System.out.println(query);
+			return false;
+		}
+	}
+	
 	
 	public String keyGen() throws ClassNotFoundException, SQLException{
 		return "UCli-"+((int) (Math.random()*9999));

@@ -2,7 +2,10 @@ package classe;
 
 
 import java.sql.SQLException;
-import modele.*;
+import java.util.ArrayList;
+
+import modele.Circuit;
+import modele.DBConnection;
 
 public class GestionCircuit {
 	
@@ -19,12 +22,11 @@ public class GestionCircuit {
 		
 		if(c.resultset.next()) {
 			int ident = c.resultset.getInt("id");
-			int places = c.resultset.getInt("places");
 			String name = c.resultset.getString("name");
-			String locations = c.resultset.getString("locations");
-			double price = c.resultset.getDouble("price");
+			String startpoint = c.resultset.getString("locations");
+			String endponit = c.resultset.getString("price");
 			
-			ci.setId(ident); ci.setName(name); ci.setPlaces(places); ci.setLocations(locations); ci.setPrice(price);
+			ci.setId(ident); ci.setName(name);  ci.setEndponit(endponit); ci.setStartpoint(startpoint);
 			
 			return ci;
 		}else {
@@ -39,7 +41,7 @@ public class GestionCircuit {
 		if(chercheCircuit(ci.getId()) != null) {
 			return false;
 		}else {
-			c.statement.executeUpdate("Insert Into circuits Values('"+ci.getId()+"','"+ci.getName()+"','"+ci.getLocations()+"','"+ci.getPlaces()+"','"+ci.getPrice()+"');");
+			c.statement.executeUpdate("Insert Into circuits Values('"+ci.getId()+"','"+ci.getName()+"','"+ci.getStartpoint()+"','"+ci.getEndponit()+"');");
 			return true;
 		}
 	}
@@ -53,4 +55,31 @@ public class GestionCircuit {
 		
 		return i;
 	}
+	
+	
+	public ArrayList<Circuit> getAllCircuits() throws ClassNotFoundException, SQLException {
+		String query = "Select * From circuits ;";
+		c.resultset = c.statement.executeQuery(query);
+		
+		ArrayList<Circuit> cis = new ArrayList<>();
+		
+		while(c.resultset.next()) {
+			Circuit ci = new Circuit();
+			ci.setId(c.resultset.getInt("idcircuit"));
+			ci.setName(c.resultset.getString("nimcircuit"));
+			ci.setStartpoint(c.resultset.getString("startpoint"));
+			ci.setEndponit(c.resultset.getString("pointarv"));
+			
+			cis.add(ci);
+		}
+		
+		return cis;
+	}
+	
+	/*public boolean deleteCircuit(int id) throws ClassNotFoundException, SQLException{
+		
+	}*/
+	
+	
+	
 }
