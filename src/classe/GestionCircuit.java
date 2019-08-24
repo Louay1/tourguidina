@@ -76,9 +76,41 @@ public class GestionCircuit {
 		return cis;
 	}
 	
-	/*public boolean deleteCircuit(int id) throws ClassNotFoundException, SQLException{
-		
-	}*/
+	public boolean deleteCircuit(int id) throws ClassNotFoundException, SQLException{
+		String query = "Delete from circuits where idcircuit"+id;
+		int i = c.statement.executeUpdate(query);
+		if(i==1) {
+			System.out.println(query);
+			return true;
+		}else {
+			System.out.println("Not Deleted");
+			return false;
+		}
+	}
+	
+	public boolean updateCircuitEnd(int id, String end) throws ClassNotFoundException, SQLException{
+		String query = "Update circuits Set pointdep = '"+end+"'  where idcircuit"+id;
+		int i = c.statement.executeUpdate(query);
+		if(i==1) {
+			System.out.println(query);
+			return true;
+		}else {
+			System.out.println("Not Deleted");
+			return false;
+		}
+	}
+	
+	public boolean updateCircuitStart(int id, String start) throws ClassNotFoundException, SQLException{
+		String query = "Update circuits Set pointdep = '"+start+"'  where idcircuit"+id;
+		int i = c.statement.executeUpdate(query);
+		if(i==1) {
+			System.out.println(query);
+			return true;
+		}else {
+			System.out.println("Not Deleted");
+			return false;
+		}
+	}
 	
 	
 	
