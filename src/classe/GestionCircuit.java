@@ -66,8 +66,8 @@ public class GestionCircuit {
 		while(c.resultset.next()) {
 			Circuit ci = new Circuit();
 			ci.setId(c.resultset.getInt("idcircuit"));
-			ci.setName(c.resultset.getString("nimcircuit"));
-			ci.setStartpoint(c.resultset.getString("startpoint"));
+			ci.setName(c.resultset.getString("nomcircuit"));
+			ci.setStartpoint(c.resultset.getString("pointdep"));
 			ci.setEndponit(c.resultset.getString("pointarv"));
 			
 			cis.add(ci);

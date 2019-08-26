@@ -1,18 +1,17 @@
 package modele;
 
 public class Restaurant extends Service{
-	private int idRest, stars;
-	private String type;
-
+	private int stars;
+	private String idRest;
 	public Restaurant() {
 		super();
 	}
 
-	public int getIdRest() {
+	public String getIdRest() {
 		return idRest;
 	}
 
-	public void setIdRest(int idRest) {
+	public void setIdRest(String idRest) {
 		this.idRest = idRest;
 	}
 
@@ -24,11 +23,5 @@ public class Restaurant extends Service{
 		this.stars = stars;
 	}
 
-	public String getType() {
-		return type;
-	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
 }

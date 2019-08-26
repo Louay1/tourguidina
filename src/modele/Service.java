@@ -3,7 +3,8 @@ package modele;
 public class Service {
 	private int idService;
 	private String name, address;
-	private Ville ville;
+	private int ville;
+	private double prix;
 	
 	public Service() {
 		super();
@@ -33,12 +34,20 @@ public class Service {
 		this.address = address;
 	}
 
-	public Ville getVille() {
+	public int getVille() {
 		return ville;
 	}
 
-	public void setVille(Ville ville) {
+	public void setVille(int ville) {
 		this.ville = ville;
+	}
+
+	public double getPrix() {
+		return prix;
+	}
+
+	public void setPrix(double prix) {
+		this.prix = prix;
 	}
 	
 	

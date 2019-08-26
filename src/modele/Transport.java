@@ -1,34 +1,22 @@
 package modele;
 
 public class Transport extends Service{
-	private int idTransport;
-	private String type, departCity, arrCity;
+	private String idTransport;
+	private int nbrplace;
 	public Transport() {
 		super();
 	}
-	public int getId() {
+	public String getId() {
 		return idTransport;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.idTransport = id;
 	}
-	public String getType() {
-		return type;
+	public int getNbrplace() {
+		return nbrplace;
 	}
-	public void setType(String type) {
-		this.type = type;
-	}
-	public String getDepartCity() {
-		return departCity;
-	}
-	public void setDepartCity(String departCity) {
-		this.departCity = departCity;
-	}
-	public String getArrCity() {
-		return arrCity;
-	}
-	public void setArrCity(String arrCity) {
-		this.arrCity = arrCity;
+	public void setNbrplace(int nbrplace) {
+		this.nbrplace = nbrplace;
 	}
 	
 }

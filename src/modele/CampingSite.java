@@ -1,17 +1,19 @@
 package modele;
 
 public class CampingSite extends Service{
-	private int idCS, capacity;
+	private String idCS; 
+	private int capacity;
+	private double area;
 
 	public CampingSite() {
 		super();
 	}
 
-	public int getIdCS() {
+	public String getIdCS() {
 		return idCS;
 	}
 
-	public void setIdCS(int idCS) {
+	public void setIdCS(String idCS) {
 		this.idCS = idCS;
 	}
 
@@ -21,5 +23,13 @@ public class CampingSite extends Service{
 
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
+	}
+
+	public double getArea() {
+		return area;
+	}
+
+	public void setArea(double area) {
+		this.area = area;
 	}
 }
