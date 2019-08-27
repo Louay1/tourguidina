@@ -5,7 +5,7 @@
     <div class="ui basic mini modal circuit-add">
     	<div class="ui header center aligned grid">Add Circuit</div>
     	<div class="content">
-    		<form class="ui form">
+    		<form class="ui form" action="../CircuitAjoutServlet">
 				<div class="field">
 					<label class="ui green label">Nom De Circuit</label>
 					<input type="text" name="nomcircuit">

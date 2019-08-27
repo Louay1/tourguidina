@@ -18,13 +18,13 @@ public class GestionCircuit {
 	
 	public Circuit chercheCircuit(int id) throws ClassNotFoundException, SQLException {
 		Circuit ci = new Circuit();
-		c.resultset = c.statement.executeQuery("Select * From circuits Where id='"+id+"';");
+		c.resultset = c.statement.executeQuery("Select * From circuits Where idcircuit='"+id+"';");
 		
 		if(c.resultset.next()) {
-			int ident = c.resultset.getInt("id");
-			String name = c.resultset.getString("name");
-			String startpoint = c.resultset.getString("locations");
-			String endponit = c.resultset.getString("price");
+			int ident = c.resultset.getInt("idcircuit");
+			String name = c.resultset.getString("nomcircuit");
+			String startpoint = c.resultset.getString("pointdep");
+			String endponit = c.resultset.getString("pointarv");
 			
 			ci.setId(ident); ci.setName(name);  ci.setEndponit(endponit); ci.setStartpoint(startpoint);
 			
@@ -39,9 +39,10 @@ public class GestionCircuit {
 		
 		
 		if(chercheCircuit(ci.getId()) != null) {
+			System.out.println(ci.getId());
 			return false;
 		}else {
-			c.statement.executeUpdate("Insert Into circuits Values('"+ci.getId()+"','"+ci.getName()+"','"+ci.getStartpoint()+"','"+ci.getEndponit()+"');");
+			c.statement.executeUpdate("Insert Into circuits(nomcircuit, pointdep, pointarv) Values('"+ci.getName()+"','"+ci.getStartpoint()+"','"+ci.getEndponit()+"');");
 			return true;
 		}
 	}
@@ -77,7 +78,7 @@ public class GestionCircuit {
 	}
 	
 	public boolean deleteCircuit(int id) throws ClassNotFoundException, SQLException{
-		String query = "Delete from circuits where idcircuit"+id;
+		String query = "Delete from circuits where idcircuit="+id;
 		int i = c.statement.executeUpdate(query);
 		if(i==1) {
 			System.out.println(query);
@@ -123,6 +124,12 @@ public class GestionCircuit {
 			return false;
 		}
 	}
+	
+	/*public String keyGen() throws ClassNotFoundException, SQLException{
+		return "UCli-"+((int) (Math.random()*9999));
+	}*/
+	
+	
 	
 	
 	

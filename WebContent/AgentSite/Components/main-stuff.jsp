@@ -36,9 +36,9 @@
 							<td><%= c.getStartpoint() %></td>
 							<td><%= c.getEndponit() %></td>
 							<td>
-								<form action="../CancelReservationServlet">
+								<form action="../CircuitSuppSevlet">
 									<input type="hidden" name="idcircuit" value="<%= c.getId() %>">
-									<input type="submit" class="ui button" value="Annuler">
+									<input type="submit" class="ui button" value="Supprimer">
 								</form>
 							</td>
 						</tr>
@@ -78,7 +78,7 @@
 							<td>
 								<form action="../CancelReservationServlet">
 									<input type="hidden" name="idmanifest" value="<%= m.getIdmanifest() %>">
-									<input type="submit" class="ui button" value="Annuler">
+									<input type="submit" class="ui button" value="Supprimer">
 								</form>
 							</td>
 						</tr>
@@ -116,7 +116,7 @@
 							<td>
 								<form action="../CancelReservationServlet">
 									<input type="hidden" name="idsite" value="<%= st.getIdsitetour() %>">
-									<input type="submit" class="ui button" value="Annuler">
+									<input type="submit" class="ui button" value="Supprimer">
 								</form>
 							</td>
 						</tr>

@@ -55,7 +55,7 @@
 								<div class="ui list">
 									<div class="item">
 										<i class="plus icon"></i>
-										<div id="hotel-add">Ajouter un Hotel</div>
+										<a id="hotel-add">Ajouter un Hotel</a>
 									</div>
 									<div class="item">
 										<i class="close icon"></i>
@@ -75,7 +75,7 @@
 								<div class="ui list">
 									<div class="item">
 										<i class="plus icon"></i>
-										<a>Ajouter un Restaurant</a>
+										<a id="restau-add">Ajouter un Restaurant</a>
 									</div>
 									<div class="item">
 										<i class="close icon"></i>
@@ -95,7 +95,7 @@
 								<div class="ui list">
 									<div class="item">
 										<i class="plus icon"></i>
-										<a>Ajouter un Guide</a>
+										<a id="guide-add">Ajouter un Guide</a>
 									</div>
 									<div class="item">
 										<i class="close icon"></i>
@@ -115,7 +115,7 @@
 								<div class="ui list">
 									<div class="item">
 										<i class="plus icon"></i>
-										<a>Ajouter un Camp</a>
+										<a id="camp-add">Ajouter un Camp</a>
 									</div>
 									<div class="item">
 										<i class="close icon"></i>
@@ -135,7 +135,7 @@
 								<div class="ui list">
 									<div class="item">
 										<i class="plus icon"></i>
-										<a>Ajouter un Transport</a>
+										<a id="trans-add">Ajouter un Transport</a>
 									</div>
 									<div class="item">
 										<i class="close icon"></i>
@@ -158,7 +158,7 @@
 					</a>
 					<div class="content">
 						<div class="ui list">
-							<a class="item">
+							<a class="item" href="../AgentLogoutServlet">
 								<i class="times circle icon"></i>
 								Logout
 							</a>

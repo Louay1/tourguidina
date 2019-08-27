@@ -60,6 +60,10 @@
 		<%@include file="Forms/sites.jsp" %>
 		
 		<%@include file="Forms/hotel.jsp" %>
+		<%@include file="Forms/restau.jsp" %>
+		<%@include file="Forms/camp.jsp" %>
+		<%@include file="Forms/guide.jsp" %>
+		<%@include file="Forms/transport.jsp" %>
 		
 		
 <script>
@@ -97,6 +101,42 @@ $(function(){
 $(function(){
 	$("#hotel-add").click(function(){
 		$(".hotel-add").modal('show');
+	});
+	$(".ui.modal").modal({
+		closable: true
+	});
+});
+
+$(function(){
+	$("#restau-add").click(function(){
+		$(".restau-add").modal('show');
+	});
+	$(".ui.modal").modal({
+		closable: true
+	});
+});
+
+$(function(){
+	$("#camp-add").click(function(){
+		$(".camp-add").modal('show');
+	});
+	$(".ui.modal").modal({
+		closable: true
+	});
+});
+
+$(function(){
+	$("#guide-add").click(function(){
+		$(".guide-add").modal('show');
+	});
+	$(".ui.modal").modal({
+		closable: true
+	});
+});
+
+$(function(){
+	$("#trans-add").click(function(){
+		$(".trans-add").modal('show');
 	});
 	$(".ui.modal").modal({
 		closable: true

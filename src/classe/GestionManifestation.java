@@ -57,7 +57,15 @@ public class GestionManifestation {
 		return ms;
 	}
 	
-	
+	public boolean ajouterManifest(Manifestation manifest) throws ClassNotFoundException, SQLException{
+		String query="";
+		int hum = c.statement.executeUpdate(query);
+		if(hum==1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 	
 	public static void main(String[] args) {
 		

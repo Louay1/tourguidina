@@ -8,24 +8,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-@WebServlet("/LogoutServlet")
-public class LogoutServlet extends HttpServlet {
+/**
+ * Servlet implementation class AgentLogoutServlet
+ */
+@WebServlet("/AgentLogoutServlet")
+public class AgentLogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public LogoutServlet() {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public AgentLogoutServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
-
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		HttpSession session = request.getSession();
 		session.invalidate();
-		response.sendRedirect("ClientSite/index.jsp");
-
+		System.out.println(request.getContextPath());
+		response.sendRedirect("AgentSite/index.jsp");
 	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
