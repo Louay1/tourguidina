@@ -116,7 +116,12 @@ public class AgentLoginServlet extends HttpServlet {
 				session.setAttribute("tps", tps);
 				session.setAttribute("gds", gds);
 				session.setAttribute("rsts", rsts);
+				System.out.println(email+" "+password+"8"); // Testing
+				
+				//response.sendRedirect("ClientSite/index.jsp");
 				response.sendRedirect("AgentSite/profile-ag.jsp");
+				
+				System.out.println(email+" "+password+"9"); // Testing
 			}
 			
 		} catch (ClassNotFoundException | SQLException e) {

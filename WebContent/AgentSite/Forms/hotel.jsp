@@ -5,16 +5,16 @@
     <div class="ui basic modal hotel-add">
     	<div class="ui header center aligned grid">Ajouter Hotel</div>
     	<div class="content">
-    		<form class="ui form">
+    		<form class="ui form" action="../HotelAddServlet">
 				<div class="field">
 					<div class="two fields">
 						<div class="field">
 							<label class="ui green label">Nom d'hotel</label>
-							<input type="text" name="adr">
+							<input type="text" name="nomhotel">
 						</div>
 	      				<div class="field">
 							<label class="ui green label">Address d'hotel</label>
-							<input type="text" name="idvoy">
+							<input type="text" name="address">
 						</div>
 	    			</div>
 				</div>
@@ -23,11 +23,11 @@
 					<div class="two fields">
 						<div class="field">
 							<label class="ui green label">Nombre des chambres</label>
-							<input type="number" name="adr">
+							<input type="number" name="rooms">
 						</div>
 	      				<div class="field">
 							<label class="ui green label">Prix moyen</label>
-							<input type="number" name="idvoy">
+							<input type="number" name="avprice">
 						</div>
 	    			</div>
 				</div>
@@ -36,11 +36,11 @@
 					<div class="two fields">
 						<div class="field">
 							<label class="ui green label">Ville</label>
-							<input type="text" name="adr">
+							<input type="number" name="ville">
 						</div>
 	      				<div class="field">
 							<label class="ui green label">Stars</label>
-							<input type="number" name="idvoy">
+							<input type="number" name="stars">
 						</div>
 	    			</div>
 				</div>

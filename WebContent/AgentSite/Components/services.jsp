@@ -55,9 +55,9 @@
 							<td><%= h.getVille() %></td>
 							<td><%= h.getStars() %></td>
 							<td>
-								<form action="../CancelReservationServlet">
-									<input type="hidden" name="idsite" value="<%= h.getIdHotel() %>">
-									<input type="submit" class="ui button" value="Annuler">
+								<form action="../HotelSuppServlet">
+									<input type="hidden" name="idhotel" value="<%= h.getIdHotel() %>">
+									<input type="submit" class="ui button" value="Supprimer">
 								</form>
 							</td>
 						</tr>
@@ -94,8 +94,8 @@
 							<td><%= r.getVille() %></td>
 							<td><%= r.getStars() %></td>
 							<td>
-								<form action="../CancelReservationServlet">
-									<input type="hidden" name="idsite" value="<%= r.getIdRest() %>">
+								<form action="../RestauSuppServlet">
+									<input type="hidden" name="idrestau" value="<%= r.getIdRest() %>">
 									<input type="submit" class="ui button" value="Annuler">
 								</form>
 							</td>
@@ -135,8 +135,8 @@
 							<td><%= cp.getCapacity() %></td>
 							<td><%= cp.getArea() %></td>
 							<td>
-								<form action="../CancelReservationServlet">
-									<input type="hidden" name="idsite" value="<%= cp.getIdCS() %>">
+								<form action="../CampSuppServlet">
+									<input type="hidden" name="idcamp" value="<%= cp.getIdCS() %>">
 									<input type="submit" class="ui button" value="Annuler">
 								</form>
 							</td>
@@ -173,8 +173,8 @@
 							<td><%= t.getVille() %></td>
 							<td><%= t.getNbrplace() %></td>
 							<td>
-								<form action="../CancelReservationServlet">
-									<input type="hidden" name="idsite" value="<%= t.getId() %>">
+								<form action="../TransportSuppServlet">
+									<input type="hidden" name="idtrans" value="<%= t.getId() %>">
 									<input type="submit" class="ui button" value="Annuler">
 								</form>
 							</td>
@@ -214,8 +214,8 @@
 							<td><%= gt.getEmail() %></td>
 							<td><%= gt.getPhone() %></td>
 							<td>
-								<form action="../CancelReservationServlet">
-									<input type="hidden" name="idsite" value="<%= gt.getIdguide() %>">
+								<form action="../GuideSuppServlet">
+									<input type="hidden" name="idguide" value="<%= gt.getIdguide() %>">
 									<input type="submit" class="ui button" value="Annuler">
 								</form>
 							</td>

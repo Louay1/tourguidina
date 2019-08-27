@@ -19,6 +19,10 @@ public class GestionServices {
 	 * Delete Hotel
 	 * Update Hotel */
 	
+	public String keyGenHo() throws ClassNotFoundException, SQLException{
+		return "SHo-"+((int) (Math.random()*9999));
+	}
+	
 	public ArrayList<Hotel> getAllHotels() throws ClassNotFoundException, SQLException{
 		ArrayList<Hotel> hs = new ArrayList<>();
 		String query = "SELECT * FROM services, hotels WHERE services.idservice LIKE hotels.idhotel";
@@ -38,7 +42,27 @@ public class GestionServices {
 		}
 		
 		return hs;
+	}
+	
+	public boolean ajouterHotel(Hotel h) throws ClassNotFoundException, SQLException {
+		String query = "insert into hotels values('"+h.getIdService()+"',"+h.getStars()+","+h.getNbrchambre()+");";
+		int humm = c.statement.executeUpdate(query);
 		
+		if(humm==1) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public boolean deleteHotel(String id) throws ClassNotFoundException, SQLException{
+		String query = "delete from hotels where idhotel like '"+id+"';";
+		int humm = c.statement.executeUpdate(query);
+		if(humm==1) {
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	/* Restaurants Zone
@@ -46,6 +70,10 @@ public class GestionServices {
 	 * Add Restaurant
 	 * Delete Restaurant
 	 * Update Restaurant */
+	
+	public String keyGenRes() throws ClassNotFoundException, SQLException{
+		return "SRe-"+((int) (Math.random()*9999));
+	}
 	
 	public ArrayList<Restaurant> getAllRestaux() throws ClassNotFoundException, SQLException{
 		ArrayList<Restaurant> rs = new ArrayList<>();
@@ -65,7 +93,27 @@ public class GestionServices {
 		}
 		
 		return rs;
-		
+	}
+	
+	public boolean ajouterResau(Restaurant r) throws ClassNotFoundException, SQLException {
+		String query = "insert into restaurants values('"+r.getIdService()+"',"+r.getStars()+");";
+		int humm = c.statement.executeUpdate(query);
+	
+		if(humm==1) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public boolean deleteRestau(String id) throws ClassNotFoundException, SQLException{
+		String query = "delete from restaurants where idhotel like"+id+";";
+		int humm = c.statement.executeUpdate(query);
+		if(humm==1) {
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	/* Guides Zone
@@ -73,6 +121,10 @@ public class GestionServices {
 	 * Add Guide
 	 * Delete Guide
 	 * Update Guide */
+	
+	public String keyGenGui() throws ClassNotFoundException, SQLException{
+		return "SGTo-"+((int) (Math.random()*9999));
+	}
 	
 	public ArrayList<Guide> getAllGuides() throws ClassNotFoundException, SQLException{
 		ArrayList<Guide> gs = new ArrayList<>();
@@ -94,11 +146,36 @@ public class GestionServices {
 		return gs;
 	}
 	
+	public boolean ajouterGuide(Guide g) throws ClassNotFoundException, SQLException {
+		String query = "insert into guidestouristique values('"+g.getIdService()+"','"+g.getEmail()+"','"+g.getPhone()+"','https://github.com/Louay1');";
+		int humm = c.statement.executeUpdate(query);
+		
+		if(humm==1) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public boolean deleteGuide(String id) throws ClassNotFoundException, SQLException{
+		String query = "delete from guidestouristique where idguide like '"+id+"';";
+		int humm = c.statement.executeUpdate(query);
+		if(humm==1) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	/* CampingSites Zone
 	 * Get All of CampingSites
 	 * Add CampingSite
 	 * Delete CampingSite
 	 * Update CampingSite */
+	
+	public String keyGenCP() throws ClassNotFoundException, SQLException{
+		return "SCa-"+((int) (Math.random()*9999));
+	}
 	
 	public ArrayList<CampingSite> getAllCamps() throws ClassNotFoundException, SQLException{
 		ArrayList<CampingSite> cps = new ArrayList<>();
@@ -119,12 +196,37 @@ public class GestionServices {
 		return cps;
 	}
 	
+	public boolean ajouterCamp(CampingSite cp) throws ClassNotFoundException, SQLException {
+		String query = "insert into campingsites values('"+cp.getIdService()+"',"+cp.getCapacity()+","+cp.getArea()+");";
+		int humm = c.statement.executeUpdate(query);
+		
+		if(humm==1) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public boolean deleteCamp(String id) throws ClassNotFoundException, SQLException{
+		String query = "delete from campingsites where idcamping like '"+id+"';";
+		int humm = c.statement.executeUpdate(query);
+		if(humm==1) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	
 	/* Transport Zone
 	 * Get All of Transport
 	 * Add Transport
 	 * Delete Transport
 	 * Update Transport */
+	
+	public String keyGenTr() throws ClassNotFoundException, SQLException{
+		return "STr-"+((int) (Math.random()*9999));
+	}
 	
 	public ArrayList<Transport> getAllTransports() throws ClassNotFoundException, SQLException{
 		ArrayList<Transport> ts = new ArrayList<>();
@@ -143,6 +245,55 @@ public class GestionServices {
 		}
 		return ts;
 	}
+	public boolean ajouterTransport(Transport t) throws ClassNotFoundException, SQLException {
+		String query = "insert into transport values('"+t.getIdService()+"',"+t.getNbrplace()+");";
+		int humm = c.statement.executeUpdate(query);
+		
+		if(humm==1) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public boolean deleteTransport(String id) throws ClassNotFoundException, SQLException{
+		String query = "delete from transport where idtransport like '"+id+"';";
+		int humm = c.statement.executeUpdate(query);
+		if(humm==1) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	
+	public boolean ajouterService(Service ser) throws ClassNotFoundException, SQLException{
+		String query = "insert into services values('"+ser.getIdService()+"','"+ser.getName()+"','"+ser.getAddress()+"',"+ser.getVille()+",'https://robohash.org/debitisculpanatus.png',"+ser.getPrix()+");";
+		System.out.println(query);
+		int humm = c.statement.executeUpdate(query);
+		System.out.println("Damn");
+		if(humm==1) {
+			return true;
+		}else{
+			System.out.println("Damn2");
+			return false;
+		}
+	}
+	
+	
+	public boolean deleteService(String id) throws ClassNotFoundException, SQLException{
+		String query = "delete from services where idservice like '"+id+"';";
+		int humm = c.statement.executeUpdate(query);
+		
+		if(humm==1) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	
+	
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException{
 		GestionServices gs = new GestionServices();

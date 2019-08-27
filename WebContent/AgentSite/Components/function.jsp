@@ -166,6 +166,10 @@
 								<i class="info icon"></i>
 								Update Info
 							</a>
+							<a class="item" href="../StatsServlet">
+								<i class="info icon"></i>
+								To Client Site
+							</a>
 						</div>
 					</div>
 				</div>

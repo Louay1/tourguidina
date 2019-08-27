@@ -5,16 +5,16 @@
     <div class="ui basic modal restau-add">
     	<div class="ui header center aligned grid">Ajouter Hotel</div>
     	<div class="content">
-    		<form class="ui form">
+    		<form class="ui form" action="../RestauAddServlet">
 				<div class="field">
 					<div class="two fields">
 						<div class="field">
 							<label class="ui green label">Nom de restaurant</label>
-							<input type="text" name="adr">
+							<input type="text" name="nomrestau">
 						</div>
 	      				<div class="field">
 							<label class="ui green label">Address de restaurant</label>
-							<input type="text" name="idvoy">
+							<input type="text" name="address">
 						</div>
 	    			</div>
 				</div>
@@ -23,11 +23,11 @@
 					<div class="two fields">
 						<div class="field">
 							<label class="ui green label">Stars</label>
-							<input type="number" name="idvoy">
+							<input type="number" name="stars">
 						</div>
 	      				<div class="field">
 							<label class="ui green label">Prix moyen</label>
-							<input type="number" name="idvoy">
+							<input type="number" name="prix">
 						</div>
 	    			</div>
 				</div>
@@ -36,7 +36,7 @@
 					<div class="two fields">
 						<div class="field">
 							<label class="ui green label">Ville</label>
-							<input type="text" name="adr">
+							<input type="text" name="idville">
 						</div>
 	    			</div>
 				</div>

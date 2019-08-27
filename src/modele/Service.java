@@ -1,7 +1,7 @@
 package modele;
 
 public class Service {
-	private int idService;
+	private String idService;
 	private String name, address;
 	private int ville;
 	private double prix;
@@ -10,11 +10,11 @@ public class Service {
 		super();
 	}
 
-	public int getIdService() {
+	public String getIdService() {
 		return idService;
 	}
 
-	public void setIdService(int idService) {
+	public void setIdService(String idService) {
 		this.idService = idService;
 	}
 
