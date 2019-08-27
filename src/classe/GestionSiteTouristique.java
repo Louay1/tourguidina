@@ -56,7 +56,29 @@ public class GestionSiteTouristique {
 		return sts;
 	}
 	
+	public boolean ajouterSite(SiteTourisrique site) throws ClassNotFoundException, SQLException{
+		String query="Insert into sitetouristiques values('"+site.getIdsitetour()+"','"+site.getNomsitetour()+"','"+site.getAddress()+"','"+site.getHeuredep()+"','"+site.getHeurefin()+"',"+site.getPrix()+","+site.getIdville()+",'"+site.getIdvoy()+"');";
+		int hum = c.statement.executeUpdate(query);
+		if(hum==1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 	
+	public boolean deleteSite(String id) throws ClassNotFoundException, SQLException{
+		String query = "delete from sitetouristiques where idsitetour like '"+id+"';";
+		int humm = c.statement.executeUpdate(query);
+		if(humm==1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public String keyGen() throws ClassNotFoundException, SQLException{
+		return "sit-"+((int) (Math.random()*9999));
+	}
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		GestionSiteTouristique gs = new GestionSiteTouristique();

@@ -76,7 +76,7 @@
 							<td><%= m.getNbrjour() %></td>
 							<td><%= m.getFees() %></td>
 							<td>
-								<form action="../CancelReservationServlet">
+								<form action="../ManifestationSuppServlet">
 									<input type="hidden" name="idmanifest" value="<%= m.getIdmanifest() %>">
 									<input type="submit" class="ui button" value="Supprimer">
 								</form>
@@ -114,7 +114,7 @@
 							<td><%= st.getIdville() %></td>
 							<td><%= st.getPrix() %></td>
 							<td>
-								<form action="../CancelReservationServlet">
+								<form action="../SiteTouristiqueSuppServlet">
 									<input type="hidden" name="idsite" value="<%= st.getIdsitetour() %>">
 									<input type="submit" class="ui button" value="Supprimer">
 								</form>

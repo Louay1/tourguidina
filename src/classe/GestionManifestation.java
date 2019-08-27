@@ -58,13 +58,26 @@ public class GestionManifestation {
 	}
 	
 	public boolean ajouterManifest(Manifestation manifest) throws ClassNotFoundException, SQLException{
-		String query="";
+		String query="Insert into manifestations values('"+manifest.getIdmanifest()+"','"+manifest.getNommanifest()+"','"+manifest.getAddress()+"',"+manifest.getIdville()+",'"+manifest.getImage()+"','"+manifest.getHeure()+"','"+manifest.getHeurefin()+"','"+manifest.getDatefin()+"',"+manifest.getNbrjour()+","+manifest.getFees()+",'"+manifest.getIdvoy()+"','"+manifest.getIdservic()+"');";
 		int hum = c.statement.executeUpdate(query);
 		if(hum==1) {
 			return true;
 		}else {
 			return false;
 		}
+	}
+	
+	public boolean deleteManifest(String id) throws ClassNotFoundException, SQLException{
+		String query = "delete from manifestations where idmnifest like '"+id+"';";
+		int humm = c.statement.executeUpdate(query);
+		if(humm==1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	public String keyGen() throws ClassNotFoundException, SQLException{
+		return "man-"+((int) (Math.random()*9999));
 	}
 	
 	public static void main(String[] args) {

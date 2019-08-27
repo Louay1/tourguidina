@@ -5,12 +5,12 @@
     <div class="ui basic modal site-add">
     	<div class="ui header center aligned grid">Add Site Touristique</div>
     	<div class="content">
-    		<form class="ui form">
+    		<form class="ui form" action="../SiteTouristiqueAjoutServlet">
 				<div class="field">
 					<div class="two fields">
 						<div class="field">
 							<label class="ui green label">Nom De Site Touristique</label>
-							<input type="text" name="adr">
+							<input type="text" name="nomsite">
 						</div>
 	      				<div class="field">
 							<label class="ui green label">Voyage inclue</label>
@@ -24,11 +24,11 @@
 					<div class="two fields">
 						<div class="field">
 							<label class="ui green label">Heure de fin</label>
-							<input type="time" name="heurefin">
+							<input type="text" name="heurefin" placeholder="HH:mm">
 						</div>
 	      				<div class="field">
 							<label class="ui green label">Heure de depart</label>
-							<input type="time" name="heure">
+							<input type="text" name="heuredep" placeholder="HH:mm">
 						</div>
 	    			</div>
 				</div>
@@ -36,12 +36,12 @@
 				<div class="field">
 					<div class="two fields">
 						<div class="field">
-							<label class="ui green label">Image de Localisation</label>
-							<input type="file" name="image">
+							<label class="ui green label">Ville</label>
+							<input type="number" name="idville">
 						</div>
 						<div class="field">
 			     			<label class="ui green label">Address de Manifestation</label>
-							<input type="text" name="nommanifest">
+							<input type="text" name="address">
 			    		</div>
 	    			</div>
 				</div>
@@ -49,11 +49,6 @@
 				
 				<div class="field">
 					<div class="two fields">
-						<div class="field">
-							<label class="ui green label">Nombre de jours</label>
-							<input type="text" name="nbrjour">
-						</div>
-						
 						<div class="field">
 							<label class="ui green label">Prix d'entre</label>
 							<input type="number" name="fees">
