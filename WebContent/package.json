@@ -1,0 +1,23 @@
+{
+  "name": "tourguidina",
+  "version": "1.0.0",
+  "description": "charts for my gp",
+  "main": "index.js",
+  "dependencies": {
+    "chart.js": "^2.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Louay1/tourguidina.git"
+  },
+  "author": "Chouchane Louai from Kodzaders",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Louay1/tourguidina/issues"
+  },
+  "homepage": "https://github.com/Louay1/tourguidina#readme"
+}

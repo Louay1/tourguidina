@@ -39,8 +39,8 @@
 	    			
 	    			<div class="column">
 	    				<div class="ui link card">
-	    					<a class="image" href="StatsServlet">
-	    						<img src="pics/client.png">
+	    					<a class="image" href="ToAdminSite">
+	    						<img src="pics/admin.png">
 	    					</a>
 	    					<div class="content center">
 	    						 <a class="header">Admin</a>

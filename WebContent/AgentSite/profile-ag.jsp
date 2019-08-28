@@ -44,7 +44,6 @@
 			<%@include file="Components/function.jsp" %>
 		</div>
 		<div class="twelve wide column">
-			
 			<%@include file="Components/main-stuff.jsp" %>
 			<%@include file="Components/services.jsp" %>
 		</div>
