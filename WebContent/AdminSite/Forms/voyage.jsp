@@ -1,8 +1,8 @@
-<!-- Add a Circuit -->
+<!-- Add a Voyage -->
     <div class="ui basic modal voyage-add">
     	<div class="ui header center aligned grid">Ajouter Voyage</div>
     	<div class="content">
-    		<form class="ui form" action="../CampAddServlet">
+    		<form class="ui form" action="../VoyageAjoutServlet">
 				<div class="field">
 					<div class="two fields">
 						<div class="field">
@@ -42,7 +42,7 @@
 						</div>
 						<div class="field">
 							<label class="ui violet label">ID Circuit</label>
-							<input type="number" name="avprix">
+							<input type="number" name="idcir">
 						</div>
 	    			</div>
 				</div>

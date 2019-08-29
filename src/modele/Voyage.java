@@ -1,14 +1,11 @@
 package modele;
 
-import java.sql.Date;
-import java.sql.Time;
-
 public class Voyage {
-	private int places, nbrjours;
+	private int places, nbrjours, idCir;
 	private double price;
-	private Date datedepart;
+	private String datedepart;
 	private String dist, nom, idvoy;
-		Time heuredep;
+	private String heuredep;
 	public Voyage() {
 		super();
 	}
@@ -21,11 +18,11 @@ public class Voyage {
 		this.nbrjours = nbrjours;
 	}
 
-	public Date getDatedepart() {
+	public String getDatedepart() {
 		return datedepart;
 	}
 
-	public void setDatedepart(Date datedepart) {
+	public void setDatedepart(String datedepart) {
 		this.datedepart = datedepart;
 	}
 
@@ -45,11 +42,11 @@ public class Voyage {
 		this.idvoy = idvoy;
 	}
 
-	public Time getHeuredep() {
+	public String getHeuredep() {
 		return heuredep;
 	}
 
-	public void setHeuredep(Time heuredep) {
+	public void setHeuredep(String heuredep) {
 		this.heuredep = heuredep;
 	}
 
@@ -74,5 +71,13 @@ public class Voyage {
 	
 	public String toString() {
 		return "Id = "+idvoy+" Dist = "+dist+" Price = "+price+" Places Av = "+places;
+	}
+
+	public int getIdCir() {
+		return idCir;
+	}
+
+	public void setIdCir(int idCir) {
+		this.idCir = idCir;
 	}
 }

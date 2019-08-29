@@ -1,4 +1,4 @@
-package controle.client;
+package controle.admin;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import classe.GestionReservation;
-import modele.Reservation;
+import classe.GestionVoyage;
+import modele.Voyage;
 
 /**
- * Servlet implementation class ManifestBookingServlet
+ * Servlet implementation class VoyageAjoutServlet
  */
-@WebServlet("/ManifestBookingServlet")
-public class ManifestBookingServlet extends HttpServlet {
+@WebServlet("/VoyageAjoutServlet")
+public class VoyageAjoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManifestBookingServlet() {
+    public VoyageAjoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,40 +31,37 @@ public class ManifestBookingServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String idvoy = request.getParameter("idvoy");
-		String manifest = request.getParameter("idmanifest");
-		String resnom = request.getParameter("nomres");
+		String nomvoyage = request.getParameter("nomvoyage");
+		int nbrplaces = Integer.parseInt(request.getParameter("nbrplaces"));
+		double prix = Double.parseDouble(request.getParameter("avprix"));
 		String heuredep = request.getParameter("heuredep");
-		String idcli = request.getParameter("idcli");
-		String datedep =  request.getParameter("datedep");
-		double prix = Double.parseDouble(request.getParameter("fees"));
+		String datedep = request.getParameter("datedep");
+		int jours = Integer.parseInt(request.getParameter("nbrjour"));
+		int idcir = Integer.parseInt(request.getParameter("idcir"));
 		
-		Reservation res = new Reservation();
 		
-		GestionReservation gr;
 		try {
-			gr = new GestionReservation();
-			res.setIdVoy(idvoy);
-			res.setResname(resnom);
-			res.setDateDep(datedep);
-			res.setHeureDep(heuredep);
-			res.setIdCli(idcli);
-			res.setIdManifest(manifest);
-			res.setPrixpaye(prix);
+			GestionVoyage gv = new GestionVoyage();
+			Voyage v = new Voyage();
 			
-			gr.ajouterReservationM(res);
+			v.setIdvoy(gv.keyGenVo());
+			v.setNom(nomvoyage);
+			v.setNbrjours(jours);
+			v.setPlaces(nbrplaces);
+			v.setPrice(prix);
+			v.setHeuredep(heuredep);
+			v.setDatedepart(datedep);
+			v.setIdCir(idcir);
+			System.out.println(v.getIdvoy());
+			boolean humm = gv.ajouterVoyage(v);
 			
-			boolean hum = gr.payment(prix, res);
-			System.out.println(hum);
-			
-			if(hum) {
-				response.sendRedirect("ClientSite/manifest.jsp");
+			if(humm) {
+				response.sendRedirect("AdminSite/profile-ad.jsp");
 			}
+			
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println(e.getMessage());
+			// TODO: handle exception
 		}
-		
 	}
 
 	/**

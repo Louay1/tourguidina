@@ -49,7 +49,13 @@ public class BookingSiteTourServlet extends HttpServlet {
 			res.setPrixpaye(prix);
 			
 			gr.ajouterReservationST(res);
-			response.sendRedirect("ClientSite/sitetour.jsp");
+			boolean hum = gr.payment(prix, res);
+			System.out.println(hum);
+			
+			if(hum) {
+				response.sendRedirect("ClientSite/sitetour.jsp");
+			
+			}
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println(e.getMessage());
 		}

@@ -2,13 +2,6 @@ package controle.client;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -59,9 +52,15 @@ public class BookingServlet extends HttpServlet {
 			res.setPrixpaye(prix);
 			
 			gr.ajouterReservation(res);
-			response.sendRedirect("ClientSite/manifest.jsp");
+			boolean hum = gr.payment(prix, res);
+			System.out.println(hum);
 			
-		}catch(ClassNotFoundException | SQLException e) {
+			if(hum) {
+				response.sendRedirect("ClientSite/voyages.jsp");
+			}
+			
+			
+		}catch(NullPointerException | ClassNotFoundException | SQLException e) {
 			System.out.println(e.getMessage());
 		}
 		

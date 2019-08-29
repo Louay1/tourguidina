@@ -76,18 +76,19 @@
 		var chart = new  Chart(ctx, {
 			type: 'bar',
 			data: {
-				labels: ['Manifestations', 'Sites Touristiques', 'Voyages'],
+				labels: ['Manifestations', 'Sites Touristiques', 'Voyages', 'Offres'],
 				datasets: [{
 					label: "Main Stuff",
 					data:[
-						<% for(int i=4; i <= 6; i++){%>
+						<% for(int i=4; i <= 7; i++){%>
 						<%= stat.get(i)%>,
 						<%} %>
 					], 
 					backgroundColor:[
 						'#008f9a',
 						'#006f87',
-						'#006389'
+						'#006389', 
+						'#003e47'
 					],
 					
 					borderWidth:1,
@@ -131,7 +132,7 @@
 					datasets: [{
 						label: "Services",
 						data:[
-							<% for(int i=6; i < stat.size(); i++){%>
+							<% for(int i=7; i < stat.size(); i++){%>
 							<%= stat.get(i)%>,
 							<%} %>
 						], 

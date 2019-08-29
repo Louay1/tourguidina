@@ -1,15 +1,15 @@
 package classe;
 
 import java.sql.SQLException;
-import java.sql.Time;
+
 import java.util.ArrayList;
-import java.sql.Date;
+
 
 
 import modele.*;
 
 public class GestionReservation {
-	DBConnection c;
+	DBConnection c, x;
 	public java.sql.Connection con;
 	
 	public GestionReservation() throws ClassNotFoundException, SQLException{
@@ -41,6 +41,35 @@ public class GestionReservation {
 			return false;
 		}
 	}
+	
+	
+	
+	public boolean payment(double amount, Reservation res) throws ClassNotFoundException, SQLException{
+		
+		c.resultset = c.statement.executeQuery("select credit from clients where idclient like '"+res.getIdCli()+"';");
+		if(c.resultset.next()) {
+			double credit = c.resultset.getDouble("credit");
+			System.out.println(credit+"---"+res.getIdCli());
+			if(credit >= amount) {
+				double newcredit = credit - amount;
+				int hum = c.statement.executeUpdate("Update clients SET credit = "+newcredit+" where idclient like '"+res.getIdCli()+"';");
+				if(hum==1) {
+					return true;
+				}else {
+					System.out.println("3rd");
+					return false;
+				}
+			}else {
+				System.out.println("2nd");
+				return false;
+			}
+			
+		}else {
+			System.out.println("1st");
+			return false;
+		}
+	}
+	
 	
 	public boolean ajouterReservationST(Reservation reservation) throws ClassNotFoundException, SQLException{
 		

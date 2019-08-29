@@ -56,6 +56,16 @@ public class GestionAdmin {
 		return i ;
 	}
 	
+	public int statOffres() throws ClassNotFoundException, SQLException{
+		String query = "Select Count(*) as totaloffs From offres;";
+		c.resultset = c.statement.executeQuery(query);
+		int i = 0;
+		if(c.resultset.next()) {
+			i=c.resultset.getInt("totaloffs");
+		}
+		return i ;
+	}
+	
 	
 	public int statAgents() throws ClassNotFoundException, SQLException{
 		String query = "Select Count(*) as totalagents From agents;";
@@ -201,12 +211,15 @@ public class GestionAdmin {
 		stats.add(this.statManifest());
 		stats.add(this.statSite());
 		stats.add(this.statVoy());
+		stats.add(this.statOffres());
 		
 		stats.add(this.statCamps());
 		stats.add(this.statGuides());
 		stats.add(this.statHotels());
 		stats.add(this.statRestau());
 		stats.add(this.statTransport());
+		
+		
 
 		return stats;
 		

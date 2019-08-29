@@ -54,7 +54,8 @@
 		} %>
 		
 		
-		
+		<%@include file="Forms/voyage.jsp" %>
+		<%@include file="Forms/offre.jsp" %>
 		
 		
 		
@@ -65,8 +66,8 @@ $('.ui.accordion')
 ;
 
 $(function(){
-	$("#circuit-add").click(function(){
-		$(".circuit-add").modal('show');
+	$("#voyage-add").click(function(){
+		$(".voyage-add").modal('show');
 	});
 	$(".ui.modal").modal({
 		closable: true
@@ -74,67 +75,14 @@ $(function(){
 });
 
 $(function(){
-	$("#manifest-add").click(function(){
-		$(".manifest-add").modal('show');
+	$("#off-add").click(function(){
+		$(".off-add").modal('show');
 	});
 	$(".ui.modal").modal({
 		closable: true
 	});
 });
 
-$(function(){
-	$("#site-add").click(function(){
-		$(".site-add").modal('show');
-	});
-	$(".ui.modal").modal({
-		closable: true
-	});
-});
-
-$(function(){
-	$("#hotel-add").click(function(){
-		$(".hotel-add").modal('show');
-	});
-	$(".ui.modal").modal({
-		closable: true
-	});
-});
-
-$(function(){
-	$("#restau-add").click(function(){
-		$(".restau-add").modal('show');
-	});
-	$(".ui.modal").modal({
-		closable: true
-	});
-});
-
-$(function(){
-	$("#camp-add").click(function(){
-		$(".camp-add").modal('show');
-	});
-	$(".ui.modal").modal({
-		closable: true
-	});
-});
-
-$(function(){
-	$("#guide-add").click(function(){
-		$(".guide-add").modal('show');
-	});
-	$(".ui.modal").modal({
-		closable: true
-	});
-});
-
-$(function(){
-	$("#trans-add").click(function(){
-		$(".trans-add").modal('show');
-	});
-	$(".ui.modal").modal({
-		closable: true
-	});
-});
 
 
 </script>

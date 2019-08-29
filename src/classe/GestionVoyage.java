@@ -57,13 +57,15 @@ import modele.Voyage;
 		}
 		
 		public boolean ajouterVoyage(Voyage v) throws SQLException, ClassNotFoundException{
-			
-			if(chercherVoyage(v.getIdvoy()) != null) {
-				return false;
-			}else {
-				c.statement.executeUpdate("Insert Into voyages Values('"+v.getIdvoy()+"','"+v.getDist()+"','"+v.getPrice()+"','"+v.getPlaces()+"');");
+			String query = "Insert Into voyages Values('"+v.getIdvoy()+"','"+v.getNom()+"',"+v.getPlaces()+","+v.getPrice()+",'"+v.getHeuredep()+"','"+v.getDatedepart()+"',"+v.getNbrjours()+","+v.getIdCir()+");";
+			System.out.println(query);
+			int hum = c.statement.executeUpdate(query);
+			System.out.println(query);
+			if(hum==1) {
 				return true;
-			}
+			}else {
+				return false;
+			}			
 		}
 		
 		public ArrayList<Voyage> getVoyagesById(String idvoy) throws ClassNotFoundException, SQLException{
@@ -75,10 +77,11 @@ import modele.Voyage;
 				v.setIdvoy(c.resultset.getString("idvoyage"));
 				v.setNom(c.resultset.getString("nomvoyage"));
 				v.setNbrjours(c.resultset.getInt("nbrjours"));
-				v.setHeuredep(c.resultset.getTime("heuredep"));
-				v.setDatedepart(c.resultset.getDate("datedep"));
+				v.setHeuredep(c.resultset.getString("heuredep"));
+				v.setDatedepart(c.resultset.getString("datedep"));
 				v.setPlaces(c.resultset.getInt("nbrplaces"));
 				v.setPrice(c.resultset.getDouble("prix"));
+				v.setIdCir(c.resultset.getInt("idcircuit"));
 				vs.add(v);
 			}
 			 
@@ -106,15 +109,22 @@ import modele.Voyage;
 				voyage.setNom(c.resultset.getString("nomvoyage"));
 				voyage.setPlaces(c.resultset.getInt("nbrplaces"));
 				voyage.setPrice(c.resultset.getDouble("prix"));
-				voyage.setHeuredep(c.resultset.getTime("heuredep"));
-				voyage.setDatedepart(c.resultset.getDate("datedep"));
+				voyage.setHeuredep(c.resultset.getString("heuredep"));
+				voyage.setDatedepart(c.resultset.getString("datedep"));
 				voyage.setNbrjours(c.resultset.getInt("nbrjours"));
-				
+				voyage.setIdCir(c.resultset.getInt("idcircuit"));
 				voyages.add(voyage);
 			}
 			
 			return voyages;
 		}
+		
+		
+		public String keyGenVo() throws ClassNotFoundException, SQLException{
+			return "voy-"+((int) (Math.random()*9999));
+		}
+		
+		
 		public static void main(String[] args) throws SQLException, ClassNotFoundException {
 			GestionVoyage gv = new GestionVoyage();
 			//System.out.println(gv.getNomberVoyages());
