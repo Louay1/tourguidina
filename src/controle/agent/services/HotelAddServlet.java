@@ -46,11 +46,11 @@ public class HotelAddServlet extends HttpServlet {
 			h.setVille(idville);
 			h.setPrix(prix);
 			h.setNbrchambre(nbrchambres);
-			System.out.println(h.getIdService());
+
 			boolean humm = gs.ajouterService(h);
-			System.out.println("Please2");
+
 			boolean humm2 = gs.ajouterHotel(h);
-			System.out.println("Please3");
+
 			if(humm && humm2) {
 				response.sendRedirect("AgentSite/profile-ag.jsp");
 			}else {

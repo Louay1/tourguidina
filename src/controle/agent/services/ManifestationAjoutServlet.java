@@ -57,9 +57,9 @@ public class ManifestationAjoutServlet extends HttpServlet {
 			manifest.setFees(fees);
 			manifest.setIdvoy(idvoy);
 			
-			System.out.println("Here0");
+
 			boolean humm = gm.ajouterManifest(manifest);
-			System.out.println(humm);
+
 			if(humm) {
 				response.sendRedirect("AgentSite/profile-ag.jsp");
 			}else {

@@ -39,9 +39,7 @@ public class VoyagesServlet extends HttpServlet {
 			ArrayList<Voyage> allvoyages = new ArrayList<>();
 			allvoyages = gv.getAllVoyages();
 			session.setAttribute("allvoyages", allvoyages);
-			//System.out.println(response);
 			response.sendRedirect("ClientSite/voyages.jsp");
-			System.out.println(response);
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println(e.getMessage());
 		}

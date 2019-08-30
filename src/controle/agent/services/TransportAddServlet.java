@@ -46,9 +46,8 @@ public class TransportAddServlet extends HttpServlet {
 			t.setNbrplace(nbrplaces);
 			t.setVille(idville);
 			boolean hum0 = gs.ajouterService(t);
-			System.out.println(hum0);
 			boolean hum = gs.ajouterTransport(t);
-			System.out.println(hum);
+
 			if(hum0 && hum) {
 				response.sendRedirect("AgentSite/profile-ag.jsp");
 			}

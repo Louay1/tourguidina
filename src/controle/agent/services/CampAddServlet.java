@@ -48,11 +48,9 @@ public class CampAddServlet extends HttpServlet {
 			cs.setArea(area);
 			cs.setPrix(avprix);
 			cs.setVille(idville);
-			System.out.println("Humm" + 8);
 			boolean humm = gs.ajouterService(cs);
-			System.out.println("Humm" + humm);
 			boolean humm2 = gs.ajouterCamp(cs);
-			System.out.println("Humm2" + humm);
+			
 			if(humm && humm2) {
 				response.sendRedirect("AgentSite/profile-ag.jsp");
 			}

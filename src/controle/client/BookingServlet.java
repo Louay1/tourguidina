@@ -53,9 +53,8 @@ public class BookingServlet extends HttpServlet {
 			
 			gr.ajouterReservation(res);
 			boolean hum = gr.payment(prix, res);
-			System.out.println(hum);
 			boolean hum0 = gr.toAccountxD(prix);
-			System.out.println(hum0);
+
 			if(hum && hum0) {
 				response.sendRedirect("ClientSite/success.jsp");
 			}

@@ -125,12 +125,5 @@ public class GestionCircuit {
 		}
 	}
 	
-	/*public String keyGen() throws ClassNotFoundException, SQLException{
-		return "UCli-"+((int) (Math.random()*9999));
-	}*/
-	
-	
-	
-	
-	
+
 }

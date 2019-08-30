@@ -49,28 +49,26 @@ public class AgentLoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		System.out.println(email+" "+password+"0");
+
 		
 		Utilisateur user = new Utilisateur();
 		user.setEmail(email); user.setMotPasse(password);
 		HttpSession session = request.getSession();
-		System.out.println(email+" "+password+"1"); // Testing
+
 		
 		try {
-			System.out.println(email+" "+password+"2"); // Testing
+
 			GestionAgent ga = new GestionAgent();
 			GestionCircuit gci = new GestionCircuit();
 			GestionManifestation gm = new GestionManifestation();
 			GestionSiteTouristique gst = new GestionSiteTouristique();
 			GestionServices gs = new GestionServices();
-			System.out.println(email+" "+password+"3"); // Testing
-			
 			
 			boolean isIt = ga.loginAgent(user);
 			
-			System.out.println(email+" "+password+"4"); // Testing
+
 			if(isIt) {
-				System.out.println(email+" "+password+"5"); // Testing
+
 				
 				Agent ag = new Agent();
 				ArrayList<Circuit> crs = new ArrayList<Circuit>();
@@ -83,28 +81,22 @@ public class AgentLoginServlet extends HttpServlet {
 				ArrayList<Transport> tps = new ArrayList<>();
 				ArrayList<Guide> gds = new ArrayList<>();
 				ArrayList<Restaurant> rsts = new ArrayList<>();
-				//ArrayList<Reservation> sts = new ArrayList<>();
+
 				crs = gci.getAllCircuits();
 				
-				System.out.println(email+" "+password+"6"); // Testing
+
 				
 				ag = ga.getAgentUsingEmail(email);
 				mfs = gm.getAllManifest();
 				sts = gst.getAllSites();
-				System.out.println("Start");
+
 				// Services
 				hs = gs.getAllHotels();
-				System.out.println("Hotel");
 				cps = gs.getAllCamps();
-				System.out.println("Camps");
 				tps = gs.getAllTransports();
-				System.out.println("Trans");
 				gds = gs.getAllGuides();
-				System.out.println("Guide");
 				rsts = gs.getAllRestaux();
-				System.out.println("Restau");
-				
-				System.out.println(email+" "+password+"7"); // Testing
+
 				session.setAttribute("ag", ag);
 				session.setAttribute("crs", crs);
 				session.setAttribute("mfs", mfs);
@@ -116,12 +108,9 @@ public class AgentLoginServlet extends HttpServlet {
 				session.setAttribute("tps", tps);
 				session.setAttribute("gds", gds);
 				session.setAttribute("rsts", rsts);
-				System.out.println(email+" "+password+"8"); // Testing
-				
-				//response.sendRedirect("ClientSite/index.jsp");
+
 				response.sendRedirect("AgentSite/profile-ag.jsp");
 				
-				System.out.println(email+" "+password+"9"); // Testing
 			}
 			
 		} catch (ClassNotFoundException | SQLException e) {

@@ -206,14 +206,7 @@ public class GestionAdmin {
 			return false;
 		}
 	}
-	 
-	/*public boolean ajouterAgent(Agent agent) throws ClassNotFoundException, SQLException{
-		
-	}*/
-	
-	
 
-	
 	public ArrayList<Integer> getAll() throws ClassNotFoundException, SQLException{
 		ArrayList<Integer> stats = new ArrayList<>();
 		stats.add(this.statClients());

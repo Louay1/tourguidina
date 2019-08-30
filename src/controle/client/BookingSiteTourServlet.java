@@ -50,7 +50,6 @@ public class BookingSiteTourServlet extends HttpServlet {
 			
 			gr.ajouterReservationST(res);
 			boolean hum = gr.payment(prix, res);
-			System.out.println(hum);
 			
 			if(hum) {
 				response.sendRedirect("ClientSite/success.jsp");

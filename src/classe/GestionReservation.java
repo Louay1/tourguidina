@@ -182,8 +182,7 @@ public class GestionReservation {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException{
 		GestionReservation gr = new GestionReservation();
 		Reservation res = new Reservation();
-		//res.setIdRes(1); res.setPrixpaye(1400.00); res.setDateDep(new Date(0)); res.setHeureDep(new Time(0));
-		//gr.ajouterReservation(res);
+
 		ArrayList<Reservation> rs = new ArrayList<>();
 		rs = gr.getManifestClient("UCli-428");
 		for(Reservation r : rs) {

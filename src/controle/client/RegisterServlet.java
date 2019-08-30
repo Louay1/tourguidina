@@ -41,9 +41,7 @@ public class RegisterServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String sexe = request.getParameter("sexe");
 		String address = request.getParameter("address");
-		//int ville = Integer.parseInt(request.getParameter("ville"));
 		
-		//HttpSession session = request.getSession();
 		Utilisateur user = new Utilisateur();
 		try {
 			GestionUtilisateur gu = new GestionUtilisateur();
@@ -52,15 +50,13 @@ public class RegisterServlet extends HttpServlet {
 			user.setPrenom(prenom);
 			user.setBirthdate(birthdate);
 			user.setAddress(address);
-			user.setImage("Hehe Nice try");
+			user.setImage("https://robohash.org/aliquamporroipsa.png");
 			user.setMotPasse(password);
 			user.setNumTlphn(phone);
 			user.setEmail(email);
 			user.setSexe(sexe);
 			user.setVille(19);
 			
-			System.out.println(nom+" "+email);
-			System.out.println(user.getIdUsr());
 			gu.ajouterUtilisateur(user);
 			gu.ajouterClient(user.getIdUsr());
 			response.sendRedirect("ClientSite/index.jsp");

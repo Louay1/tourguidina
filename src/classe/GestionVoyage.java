@@ -94,13 +94,6 @@ import modele.Voyage;
 			c.resultset = c.statement.executeQuery(query);
 			
 			while(c.resultset.next()) {
-				/*String idvoyage = c.resultset.getString("idvoyage");
-				//String nomvoyage= c.resultset.getString("nomvoyage");
-				int nbrplaces = c.resultset.getInt("nbrplaces");
-				double prix = c.resultset.getDouble("prix");
-				java.sql.Time heuredep = c.resultset.getTime("heuredep");
-				java.sql.Date datedep = c.resultset.getDate("datedep");
-				int nbrjour = c.resultset.getInt("nbrjours");**/
 				
 				int idcircuit = c.resultset.getInt("idcircuit");
 				
@@ -127,14 +120,6 @@ import modele.Voyage;
 		
 		public static void main(String[] args) throws SQLException, ClassNotFoundException {
 			GestionVoyage gv = new GestionVoyage();
-			//System.out.println(gv.getNomberVoyages());
-			//Voyage v = new Voyage();
-			//System.out.println(gv.chercherVoyage(5).getDist());
-			/*ArrayList<Voyage> vs = new ArrayList<>();
-			vs = gv.chercherVoyageInternaute("Biskra");
-			for(Voyage v : vs) {
-				System.out.println(v.toString());
-			}*/
 			
 			Voyage v = new Voyage();
 			v.setDist("Batna"); v.setPlaces(4); v.setPrice(2500.00);

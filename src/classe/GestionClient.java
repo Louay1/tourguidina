@@ -25,7 +25,6 @@ public class GestionClient {
 		Voyage v = new Voyage();
 		
 		c.resultset = c.statement.executeQuery("Select * From clients Where email='"+email+"';");
-		//c.resultset = c.statement.executeQuery("Select * From users.clients Where email='"+email+"';");
 		if(c.resultset.next()) {
 			String ident = c.resultset.getString("idvoy");
 			int places = c.resultset.getInt("places");
@@ -39,30 +38,13 @@ public class GestionClient {
 	}
 	
 	public boolean login(Utilisateur user) throws ClassNotFoundException, SQLException{
-		//String query = "Select * From utilisateurs where email='"+email+"';";
 		String query = "Select * From utilisateurs where email='"+user.getEmail()+"' and motpass='"+user.getMotPasse()+"';";
-		//String query2 = "Select * From clients where idclient='"+user.getIdUsr()+"';";
 		String email1 = "Nothing@database.toz";
 		c.resultset = c.statement.executeQuery(query);
-		//x.resultset = x.statement.executeQuery(query2);
 		if(c.resultset.next()) {
 			String password = c.resultset.getString("motpass");
 			String email2 = c.resultset.getString("email");
 			if(password.equals(user.getMotPasse()) && email2.equals(user.getEmail())) {
-				/*String nom = c.resultset.getString("nom");
-				String prenom = c.resultset.getString("prenom");
-				String birthday = c.resultset.getString("birthdate");
-				String sexe = c.resultset.getString("sexe");
-				String address = c.resultset.getString("address");
-				String image = c.resultset.getString("image");
-				String phone = c.resultset.getString("phone");
-				int idville = c.resultset.getInt("idville");
-				int points = x.resultset.getInt("points");
-				double credit = x.resultset.getDouble("credit");
-				Client cl = new Client();
-				cl.setNom(nom); cl.setPrenom(prenom); cl.setBirthdate(birthday); cl.setSexe(sexe);
-				cl.setAddress(address); cl.setImage(image); cl.setPhone(phone); cl.setVille(idville);
-				cl.setPoints(points); cl.setCredit(credit);*/
 				return true;
 			}else {
 				return false;

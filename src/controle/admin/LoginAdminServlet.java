@@ -54,7 +54,7 @@ public class LoginAdminServlet extends HttpServlet {
 				response.sendRedirect("AdminSite/profile-ad.jsp");
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 	}
 

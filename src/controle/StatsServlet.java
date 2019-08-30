@@ -32,9 +32,8 @@ public class StatsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session=request.getSession(true);
-			//System.out.println("Here1");
 			GestionAdmin ga = new GestionAdmin();
-			//System.out.println("Here2");
+
 			int voyages = ga.statVoy();
 			int hotels = ga.statHotels();
 			int camps = ga.statCamps();
@@ -42,8 +41,6 @@ public class StatsServlet extends HttpServlet {
 			int restau = ga.statRestau();
 			int villes = ga.statVilles();
 			
-			//System.out.println("Here3");
-			//request.getSession().setAttribute("voyages", voyages);
 			session.setAttribute("voyages", voyages);
 			session.setAttribute("hotels",hotels );
 			session.setAttribute("camps", camps);

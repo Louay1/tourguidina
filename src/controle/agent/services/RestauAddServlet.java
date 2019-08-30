@@ -45,11 +45,11 @@ public class RestauAddServlet extends HttpServlet {
 			r.setAddress(address);
 			r.setVille(idville);
 			r.setPrix(prix);
-			System.out.println(r.getIdService());
+
 			boolean humm = gs.ajouterService(r);
-			System.out.println("Please2");
+
 			boolean humm2 = gs.ajouterResau(r);
-			System.out.println("Please3");
+
 			if(humm && humm2) {
 				response.sendRedirect("AgentSite/profile-ag.jsp");
 			}else {
