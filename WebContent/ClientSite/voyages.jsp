@@ -37,7 +37,7 @@
 		    <a class="item" href="../VoyagesServlet">Voyages</a>
 		    <a class="item" href="../ManifestationServlet">Manifestations Culturelle</a>
 		    <a class="item" href="../SiteTouristiqueServlet">Sites Touristiques</a>
-		    <a class="item" href="#services">Services</a>
+		    <a class="item" href="../OffresServlet">Offres</a>
 		    <%if(request.getSession().getAttribute("client") == null){ %>
 		    <div class="right menu">
 		       <div class="item">

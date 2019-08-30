@@ -59,7 +59,7 @@ public class ManifestBookingServlet extends HttpServlet {
 			System.out.println(hum);
 			
 			if(hum) {
-				response.sendRedirect("ClientSite/manifest.jsp");
+				response.sendRedirect("ClientSite/success.jsp");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println(e.getMessage());

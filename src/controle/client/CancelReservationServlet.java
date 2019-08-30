@@ -35,7 +35,7 @@ public class CancelReservationServlet extends HttpServlet {
 			GestionReservation gr = new GestionReservation();
 			boolean idk = gr.deleteBooking(res);
 			if(idk) {
-				response.sendRedirect("ClientSite/profile.jsp");
+				response.sendRedirect("ClientSite/success.jsp");
 			}
 			
 			

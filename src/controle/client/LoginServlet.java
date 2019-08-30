@@ -55,8 +55,7 @@ public class LoginServlet extends HttpServlet {
 				rs = gr.getVoyagesClient(cl.getIdClient());
 				ms = gr.getManifestClient(cl.getIdClient());
 				st = gr.getSitesClient(cl.getIdClient());
-				String id = rs.get(0).getIdVoy();
-				System.out.println(id);
+
 				//vs = gv.getVoyagesById(id);
 				session.setAttribute("client", cl);
 				session.setAttribute("rs", rs);

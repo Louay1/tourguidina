@@ -71,6 +71,23 @@ public class GestionReservation {
 	}
 	
 	
+	public boolean toAccountxD(double amount) throws ClassNotFoundException, SQLException{
+		c.resultset = c.statement.executeQuery("Select credit from admins ;");
+		if(c.resultset.first()) {
+			double newamount = c.resultset.getDouble("credit");
+			System.out.println(newamount+"----"+amount);
+			newamount = newamount +amount;
+			String query = "Update admins Set credit="+newamount+";";
+			System.out.println(query);
+			int hum = c.statement.executeUpdate(query);
+			System.out.println(newamount+"----"+amount);
+			
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public boolean ajouterReservationST(Reservation reservation) throws ClassNotFoundException, SQLException{
 		
 		String query = "Insert Into reservation(idres, prixpay, heuredep,idvoy,idsitetour, idcli) Values("+reservation.getIdRes()+","+reservation.getPrixpaye()+",'"+reservation.getHeureDep()+"','"+reservation.getIdVoy()+"','"+reservation.getIdSitetou()+"','"+reservation.getIdCli()+"');";

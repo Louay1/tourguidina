@@ -132,7 +132,7 @@
 					datasets: [{
 						label: "Services",
 						data:[
-							<% for(int i=7; i < stat.size(); i++){%>
+							<% for(int i=7; i < stat.size()-1; i++){%>
 							<%= stat.get(i)%>,
 							<%} %>
 						], 

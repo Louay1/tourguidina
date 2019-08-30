@@ -17,16 +17,16 @@ import modele.Manifestation;
 import modele.Offre;
 
 /**
- * Servlet implementation class ManifestationServlet
+ * Servlet implementation class OffresServlet
  */
-@WebServlet("/ManifestationServlet")
-public class ManifestationServlet extends HttpServlet {
+@WebServlet("/OffresServlet")
+public class OffresServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManifestationServlet() {
+    public OffresServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,13 +35,15 @@ public class ManifestationServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		try {
 			HttpSession session = request.getSession();
-			GestionManifestation gm = new GestionManifestation();
-			ArrayList<Manifestation> allmanifestation = new ArrayList<>();
-			allmanifestation = gm.getAllManifest();
-			session.setAttribute("allmanifestation", allmanifestation);
-			response.sendRedirect("ClientSite/manifest.jsp");
+			GestionOffre go = new GestionOffre();
+			ArrayList<Offre> alloffres = new ArrayList<>();
+			alloffres = go.getAllOffres();
+			session.setAttribute("alloffres", alloffres);
+			response.sendRedirect("ClientSite/offres.jsp");
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println(e.getMessage());

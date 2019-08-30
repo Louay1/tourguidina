@@ -178,6 +178,16 @@ public class GestionAdmin {
 		return i ;
 	}
 	
+	public int getGuidinaCredit() throws ClassNotFoundException, SQLException{
+		String query = "Select credit From admins;";
+		c.resultset = c.statement.executeQuery(query);
+		int i = 0;
+		if(c.resultset.next()) {
+			i = c.resultset.getInt("credit");
+		}
+		return i ;
+	}
+	
 	
 	public boolean loginAdmin(Utilisateur user) throws ClassNotFoundException, SQLException{
 		String query = "Select * From utilisateurs where email='"+user.getEmail()+"' and motpass='"+user.getMotPasse()+"';";
@@ -201,6 +211,9 @@ public class GestionAdmin {
 		
 	}*/
 	
+	
+
+	
 	public ArrayList<Integer> getAll() throws ClassNotFoundException, SQLException{
 		ArrayList<Integer> stats = new ArrayList<>();
 		stats.add(this.statClients());
@@ -218,6 +231,8 @@ public class GestionAdmin {
 		stats.add(this.statHotels());
 		stats.add(this.statRestau());
 		stats.add(this.statTransport());
+		
+		stats.add(this.getGuidinaCredit());
 		
 		
 

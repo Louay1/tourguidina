@@ -27,10 +27,8 @@
 	<meta charset="UTF-8">
 </head>
 <body>	
-
 		
-	
-	<!-- Navigation -->
+		<!-- Navigation -->
 		<nav class="ui large top fixed hidden menu">
 		  <div class="ui container">
 		  	<a class="item" href="../StatsServlet"><img src="../pics/logo.png"></a>
@@ -71,15 +69,18 @@
 		
 		<!-- End Of Navigation -->
 		
+		
 		<%
-		ArrayList<Manifestation> allmanifestation = new ArrayList<>();
-		allmanifestation = (ArrayList<Manifestation>) session.getAttribute("allmanifestation");
+		ArrayList<Offre> alloffres = new ArrayList<>();
+		alloffres = (ArrayList<Offre>) session.getAttribute("alloffres");
+		
+		int i = 1;
 	%>
 	<h1 class="nos-voyages">Nos Manifestations</h1>
 	<div class="ui container">
 		<div class="ui link centered special cards">
-		<% for(Manifestation manifest : allmanifestation){ %>
-			<form class="card" action="../ManifestBookingServlet">
+		<% for(Offre off : alloffres){ %>
+			<form class="card">
 				<div class="blurring dimmable image">
 					<div class="ui dimmer">
 						<div class="content">
@@ -94,18 +95,17 @@
 					<img src="../pics/oran.jpeg">
 				</div>
 				<div class="content">
-					<input type="hidden" name="nomres" value="<%= manifest.getNommanifest() %>">
-					<input type="hidden" name="idmanifest" value="<%= manifest.getIdmanifest() %>">
-					<div class="header"><%= manifest.getNommanifest() %></div>
+					<input type="hidden" name="idoff" value="<%= off.getIdoffre() %>">
+					<div class="header">Offre <%= i++ %></div>
 					<div class="description">
-						<input type="hidden" name="heuredep" value="<%= manifest.getHeure() %>">
-        				Heure : <%= manifest.getHeure() %> <%= manifest.getIdmanifest() %>
+						<input type="hidden" name="datefin" value="<%= off.getDaredep() %>">
+        				Date Depart : <%= off.getDaredep() %>
         				<br>
-        				<input type="hidden" name="datedep" value="<%= manifest.getDatefin() %>">
-        				Date : <%= manifest.getDatefin() %>
+        				<input type="hidden" name="datefin" value="<%= off.getDatefin() %>">
+        				Date Fin : <%= off.getDatefin() %>
         				<br>
-        				<input type="hidden" name="fees" value="<%= manifest.getFees() %>">
-        				Price : <%= manifest.getFees() %>
+        				<input type="hidden" name="redu" value="<%= off.getReduction() %>">
+        				Reduction : <%= off.getReduction() %> %
      				 </div>
      				 <br>
      				 <% if(request.getSession().getAttribute("client") != null){ %>
@@ -115,7 +115,7 @@
 						cl = (Client) session.getAttribute("client");
 					%>
      				 <div>
-     				 	<input type="hidden" name ="idvoy" value="<%= manifest.getIdvoy()%>">
+     				 	<input type="hidden" name ="idcir" value="<%= off.getIdcircuit()%>">
      				 	<input type="hidden" name ="idcli" value="<%= cl.getIdClient()%>">
      				 	<input type="submit" class="ui green button" value="Reserver">
      				 </div>
@@ -127,24 +127,12 @@
 						</div>
      				 <%} %>
 				</div>
-				<div class="extra content">
-					<span class="right floated">
-						<%= manifest.getHeurefin() %>
-					</span>
-					<span>
-						<i class="quidditch icon"></i>
-						<%= manifest.getIdville() %>
-					</span>
-				</div>
 			</form>
 			<%} %>
 		</div>
 	</div>
 	
 	<br><br>
-		
-		
-		
 		
 		
 		

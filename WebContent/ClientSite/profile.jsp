@@ -1,4 +1,5 @@
 <%@page import="java.util.ArrayList"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -22,7 +23,20 @@
 </script>
 <script src="../js/main.js">
 </script>
-	
+	<style>
+footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: #f5f5f5;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+</style>
 </head>
 <body>
 
@@ -38,7 +52,7 @@
 		    <a class="item" href="../VoyagesServlet">Voyages</a>
 		    <a class="item" href="../ManifestationServlet">Manifestations Culturelle</a>
 		    <a class="item" href="../SiteTouristiqueServlet">Sites Touristiques</a>
-		    <a class="item" href="#services">Services</a>
+		    <a class="item" href="../OffresServlet">Offres</a>
 		    <%if(request.getSession().getAttribute("client") == null){ %>
 		    <div class="right menu">
 		       <div class="item">
@@ -227,19 +241,21 @@
 		</div>
 	
 	<%}else{ %>
-		<div class="ui very padded container grid">
-			<div class="sixteen wide column">
-				<div class="ui negative message nos-voyages">
-					<div class="header">
-						We are Sorry, you may not see this
+		<div class="ui middle aligned center aligned grid">
+			<div class="row"></div>
+			<div class="three column row">
+				<div class="column">
+					<div class="ui negative message nos-voyages">
+						<div class="header">
+							We are Sorry, you may not see this!
+						</div>
+						<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+						Nam sed justo in neque blandit vulputate. 
+						</p>
 					</div>
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-					Nam sed justo in neque blandit vulputate. 
-					</p>
 				</div>
 			</div>
-			
 		</div>
 		
 	<%} %>
@@ -249,6 +265,56 @@
 		<%@include file="signin.jsp" %>
 		
 	<br><br>
+	<%if(request.getSession().getAttribute("client") == null){ %>
+	<footer>
+<div class="ui inverted vertical footer segment">
+    <div class="ui center aligned container">
+      <div class="ui stackable inverted divided grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Group 1</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Link One</a>
+            <a href="#" class="item">Link Two</a>
+            <a href="#" class="item">Link Three</a>
+            <a href="#" class="item">Link Four</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Group 2</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Link One</a>
+            <a href="#" class="item">Link Two</a>
+            <a href="#" class="item">Link Three</a>
+            <a href="#" class="item">Link Four</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Group 3</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Link One</a>
+            <a href="#" class="item">Link Two</a>
+            <a href="#" class="item">Link Three</a>
+            <a href="#" class="item">Link Four</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Footer Header</h4>
+          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+        </div>
+      </div>
+      <div class="ui inverted section divider"></div>
+      <img src="../pics/logo.png" class="ui centered mini image">
+      <div class="ui horizontal inverted small divided link list">
+        <a class="item" href="#">Site Map</a>
+        <a class="item" href="#">Contact Us</a>
+        <a class="item" href="#">Terms and Conditions</a>
+        <a class="item" href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+
+</footer>
+	<%}else{ %>
 	
 	<div class="ui inverted vertical footer segment">
     <div class="ui center aligned container">
@@ -294,8 +360,8 @@
         <a class="item" href="#">Privacy Policy</a>
       </div>
     </div>
-   </div> 
-	
+  </div>
+	<%} %>
 <script>
 	$('.dropdown').dropdown();
 	

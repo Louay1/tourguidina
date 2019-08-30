@@ -59,7 +59,7 @@ public class GestionUtilisateur {
 	}
 	
 	public boolean ajouterClient(String iduser) throws ClassNotFoundException, SQLException{
-		String query = "Insert into clients(idclient, points, credit) values('"+iduser+"', 0, 100000);";
+		String query = "Insert into clients(idclient, points, credit) values('"+iduser+"', 0, 20000000);";
 		c.connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/l3guidina","root","mynewpassword");
 		c.statement=c.connection.createStatement();
 		int isit = c.statement.executeUpdate(query);

@@ -53,7 +53,7 @@ public class BookingSiteTourServlet extends HttpServlet {
 			System.out.println(hum);
 			
 			if(hum) {
-				response.sendRedirect("ClientSite/sitetour.jsp");
+				response.sendRedirect("ClientSite/success.jsp");
 			
 			}
 		} catch (ClassNotFoundException | SQLException e) {

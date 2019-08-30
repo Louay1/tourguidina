@@ -27,6 +27,7 @@
 						<th><a>Hotels</a></th>
 						<th><a>Restaurants</a></th>
 						<th><a>Transport</a></th>
+						<th><a>Our Profits</a></th>
 					</tr>
 				</thead>
 				
